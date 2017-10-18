@@ -1,18 +1,18 @@
 package JaugeTest;
 
 /**
- * RÃ©alisation d'une Jauge avec des entiers naturels.
+ * Réalisation d'une Jauge avec des entiers naturels.
  * <p>
- * Un objet Jauge dÃ©finit un niveau et un intervalle ouvert ]vigieMin, vigieMax[.
- * Le niveau d'une jauge n'est pas limitÃ© aux valeurs dans l'intervalle.
+ * Un objet Jauge définit un niveau et un intervalle ouvert ]vigieMin, vigieMax[.
+ * Le niveau d'une jauge n'est pas limité aux valeurs dans l'intervalle.
  * <p>
- * L'Ã©tat d'une jauge correspond Ã  la position de son niveau par rapport Ã 
+ * L'état d'une jauge correspond à  la position de son niveau par rapport à 
  * l'intervalle ]vigieMin, vigieMax[.
- * Une jauge dÃ©finit trois etats :
+ * Une jauge définit trois etats :
  * <ul>
  * <li>vert niveau dans l'intervalle,
- * <li>rouge niveau supÃ©rieur Ã  l'intervalle,
- * <li>bleu niveau infÃ©rieur Ã  l'intervalle.
+ * <li>rouge niveau supérieur à  l'intervalle,
+ * <li>bleu niveau inférieur à  l'intervalle.
  * </ul>
  *
  * @author georgy
@@ -24,7 +24,7 @@ public class JaugeNaturel {
   private final long max;
 
   /**
-   * Construit une instance en prÃ©cisant la valeur de dÃ©part de la Jauge
+   * Construit une instance en précisant la valeur de départ de la Jauge
    * et l'intervalle de vigie.
    *
    * @param vigieMin valeur minimale de l'intervalle de vigie.
@@ -42,7 +42,7 @@ public class JaugeNaturel {
 
 
   /**
-   * L'Ã©tat de la jauge est-il rouge ?
+   * L'état de la jauge est-il rouge ?
    *
    * @return vrai si niveau >=  vigieMax.
    *
@@ -52,9 +52,9 @@ public class JaugeNaturel {
   }
 
   /**
-   * L'Ã©tat de la jauge est-il vert ?
+   * L'état de la jauge est-il vert ?
    *
-   * @return vrai si niveau appartient Ã  ]vigieMin, vigieMax[.
+   * @return vrai si niveau appartient à  ]vigieMin, vigieMax[.
    *
    */
   public boolean estVert() {
@@ -63,7 +63,7 @@ public class JaugeNaturel {
   }
 
   /**
-   * L'Ã©tat de la jauge est-il bleu ?
+   * L'état de la jauge est-il bleu ?
    *
    * @return vrai si niveau <= vigieMin.
    */
@@ -72,33 +72,33 @@ public class JaugeNaturel {
   }
 
   /**
-   * IncrÃ©mente le niveau d'une unitÃ©.
-   * L'Ã©tat peut devenir supÃ©rieur Ã  vigieMax.
+   * Incrémente le niveau d'une unité.
+   * L'état peut devenir supérieur à  vigieMax.
    */
   public void incrementer() {
     valeur++;
   }
 
   /**
-   * DÃ©crÃ©mente le niveau d'une unitÃ©.
-   * L'Ã©tat peut devenir infÃ©rieur Ã  la vigieMin.
+   * Décrémente le niveau d'une unité.
+   * L'état peut devenir inférieur à  la vigieMin.
    */
   public void decrementer() {
   }
 
 
   /**
-   * Cette mÃ©thode est hÃ©ritÃ©e de la classe {@link java.lang.Object}.
-   * TrÃ¨s utile pour le dÃ©bogage, elle permet de fournir une
-   * chaÃ®ne de caractÃ¨res correspondant a l'Ã©tat d'un objet.
-   * <p> Un code par dÃ©faut est dÃ©finit dans
+   * Cette méthode est héritée de la classe {@link java.lang.Object}.
+   * Très utile pour le débogage, elle permet de fournir une
+   * chaîne de caractères correspondant a l'état d'un objet.
+   * <p> Un code par défaut est définit dans
    * {@link java.lang.Object#toString() la classe Object}
-   * Il faut adapter (redÃ©finir) le code de cette mÃ©thode Ã  chaque classe.
+   * Il faut adapter (redéfinir) le code de cette méthode à  chaque classe.
    *
-   * Pour les chaÃ®nes de cararctÃ¨res, l'opÃ©rateur + correspond a la concatÃ©nation.
-   * Les valeurs numÃ©riques sont alors convertit en ascii.
-   * Si l'Ã©tat d'une instance de cette classe est min=-456, max=23,
-   * valeur=-7, la concatÃ©nation donne la chaÃ®ne "<-7 [-456,23]>".
+   * Pour les chaînes de cararctères, l'opérateur + correspond a la concaténation.
+   * Les valeurs numériques sont alors convertit en ascii.
+   * Si l'état d'une instance de cette classe est min=-456, max=23,
+   * valeur=-7, la concaténation donne la chaîne "<-7 [-456,23]>".
    */
   @Override
   public String toString() {
