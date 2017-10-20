@@ -26,4 +26,13 @@ public class JaugeNaturelTest {
 		assert !new JaugeNaturel(0, 5, 5).estBleu() : "une jauge à la limite suppérieure ne doit pas être bleue";
 	}
 	
+	@Test
+	public void testEstRouge(){
+		assert !jaugeVerte.estRouge() : "ma jaugeVerte ne doit pas être rougee";
+		assert jaugeRouge.estRouge() : "ma jaugeRouge doit être rouge";
+		assert !jaugeBleue.estRouge() : "ma jaugeBleue ne doit pas être rouge ";
+		assert !new JaugeNaturel(0, 5, 0).estRouge() : "une jauge à la limite inférieure ne doit pas être rouge mais bleue";
+		assert new JaugeNaturel(0, 5, 5).estRouge() : "une jauge à la limite suppérieure doit être rouge";
+	}
+	
 }
