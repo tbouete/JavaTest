@@ -84,10 +84,11 @@ public class JaugeNaturel {
    * L'état peut devenir inférieur à  la vigieMin.
    */
   public void decrementer() {
+	  valeur--;
   }
 
 
-  /**
+  /** 
    * Cette méthode est héritée de la classe {@link java.lang.Object}.
    * Très utile pour le débogage, elle permet de fournir une
    * chaîne de caractères correspondant a l'état d'un objet.
