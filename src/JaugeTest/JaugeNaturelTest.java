@@ -35,4 +35,15 @@ public class JaugeNaturelTest {
 		assert new JaugeNaturel(0, 5, 5).estRouge() : "une jauge à la limite suppérieure doit être rouge";
 	}
 	
+	
+	@Test
+	public void testIncrementer()
+	{
+		long newVal = jaugeVerte.getValeur();
+		jaugeVerte.incrementer();
+		assert jaugeVerte.getValeur() == newVal+1.0 :  "ma valeur est diff";
+		
+	}
+	
+	
 }

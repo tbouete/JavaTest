@@ -23,7 +23,14 @@ public class JaugeNaturel {
   private final long min;
   private final long max;
 
-  /**
+  //Accesseurs
+  public long getValeur() {return valeur;}
+  public void setValeur(long valeur) {this.valeur = valeur;}
+  public long getMin() {return min;}
+  public long getMax() {return max;}
+
+
+/**
    * Construit une instance en précisant la valeur de départ de la Jauge
    * et l'intervalle de vigie.
    *
