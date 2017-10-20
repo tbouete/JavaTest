@@ -1,5 +1,7 @@
 package JaugeTest;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class JaugeNaturelTest {
@@ -39,10 +41,10 @@ public class JaugeNaturelTest {
 	@Test
 	public void testIncrementer()
 	{
+		String message = "La valeur n'a pas été incrémentée";
 		long newVal = jaugeVerte.getValeur();
 		jaugeVerte.incrementer();
-		assert jaugeVerte.getValeur() == newVal+1.0 :  "ma valeur est diff";
-		
+		assertEquals(message, newVal+1.0,jaugeVerte.getValeur());
 	}
 	
 	
