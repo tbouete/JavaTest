@@ -45,6 +45,16 @@ public class JaugeNaturelTest {
 		long newVal = jaugeVerte.getValeur();
 		jaugeVerte.incrementer();
 		assertEquals(message, newVal+1.0,jaugeVerte.getValeur());
+		assert jaugeVerte.getValeur() == newVal + 1.0 :  "ma valeur est diff";
+		
+	}
+	
+	@Test
+	public void testDecrementer()
+	{
+		long newVal = jaugeVerte.getValeur();
+		jaugeVerte.decrementer();
+		assert jaugeVerte.getValeur() == newVal - 1.0 :  "ma valeur est diff";
 	}
 	
 	
