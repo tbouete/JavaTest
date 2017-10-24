@@ -8,45 +8,53 @@ public class JaugeNaturelTest {
 	
 	JaugeNaturel jaugeVerte = new JaugeNaturel(0, 5, 2);
 	JaugeNaturel jaugeRouge = new JaugeNaturel(0, 5, 6);
+	JaugeNaturel jaugeRougeBis = new JaugeNaturel(0, 5, 5);
 	JaugeNaturel jaugeBleue = new JaugeNaturel(0, 5, -2);
+	JaugeNaturel jaugeBleueBis = new JaugeNaturel(0, 5, 0);
+	JaugeNaturel jaugeLimite1 = new JaugeNaturel(5, 0, 2); //vigieMax < depart < vigieMin
+	JaugeNaturel jaugeLimite2 = new JaugeNaturel(5, 5, 2); //vigieMin = VigieMax < depart 
+	JaugeNaturel jaugeLimite3 = new JaugeNaturel(5, 5, 5);
 	
 	@Test
-	public void testEstVert(){
-		assert jaugeVerte.estVert() : "ma jaugeVerte doit être verte";
-		assert !jaugeRouge.estVert() : "ma jaugeRouge ne doit pas être verte ";
-		assert !jaugeBleue.estVert() : "ma jaugeBleue ne doit pas être verte ";
-		assert !new JaugeNaturel(0, 5, 0).estVert() : "une jauge à la limite inférieure ne doit pas être verte";
-		assert !new JaugeNaturel(0, 5, 5).estVert() : "une jauge à la limite suppérieure ne doit pas être verte";
+	public void testEstVert()
+	{
+		String messErreur1 = "une jauge à la limite inférieure ne doit pas être verte";
+		String messErreur2 = "une jauge à la limite supérieure ne doit pas être verte";
+		
+		assertTrue(jaugeVerte.estVert());
+		assertFalse(jaugeRouge.estVert());
+		assertFalse(jaugeBleue.estVert());
+		
+		assertFalse(messErreur1, jaugeBleueBis.estVert()); 
+		assertFalse(messErreur2, jaugeRougeBis.estVert());
 	}
 	
 	@Test
-	public void testEstBleu(){
-		assert !jaugeVerte.estBleu() : "ma jaugeVerte ne doit pas être bleue";
-		assert !jaugeRouge.estBleu() : "ma jaugeRouge ne doit pas être bleue ";
-		assert jaugeBleue.estBleu() : "ma jaugeBleue doit être bleue ";
-		assert new JaugeNaturel(0, 5, 0).estBleu() : "une jauge à la limite inférieure doit être bleue";
-		assert !new JaugeNaturel(0, 5, 5).estBleu() : "une jauge à la limite suppérieure ne doit pas être bleue";
+	public void testEstBleu()
+	{
+		assertFalse(jaugeVerte.estBleu());
+		assertFalse(jaugeRouge.estBleu());
+		assertTrue(jaugeBleue.estBleu());
+		
+		assertTrue("valeur égale à la limite inférieur", jaugeBleueBis.estBleu());
 	}
 	
 	@Test
-	public void testEstRouge(){
-		assert !jaugeVerte.estRouge() : "ma jaugeVerte ne doit pas être rougee";
-		assert jaugeRouge.estRouge() : "ma jaugeRouge doit être rouge";
-		assert !jaugeBleue.estRouge() : "ma jaugeBleue ne doit pas être rouge ";
-		assert !new JaugeNaturel(0, 5, 0).estRouge() : "une jauge à la limite inférieure ne doit pas être rouge mais bleue";
-		assert new JaugeNaturel(0, 5, 5).estRouge() : "une jauge à la limite suppérieure doit être rouge";
+	public void testEstRouge()
+	{
+		assertFalse(jaugeVerte.estRouge());
+		assertTrue(jaugeRouge.estRouge());
+		assertFalse(jaugeBleue.estRouge());
+		assertTrue("valeur égale a la limite supérieur", jaugeRougeBis.estRouge());
 	}
 	
 	
 	@Test
 	public void testIncrementer()
 	{
-		String message = "La valeur n'a pas été incrémentée";
 		long newVal = jaugeVerte.getValeur();
 		jaugeVerte.incrementer();
-		assertEquals(message, newVal+1.0,jaugeVerte.getValeur());
-		assert jaugeVerte.getValeur() == newVal + 1.0 :  "ma valeur est diff";
-		
+		assertTrue(newVal + 1.0 == jaugeVerte.getValeur());	
 	}
 	
 	@Test
@@ -54,7 +62,7 @@ public class JaugeNaturelTest {
 	{
 		long newVal = jaugeVerte.getValeur();
 		jaugeVerte.decrementer();
-		assert jaugeVerte.getValeur() == newVal - 1.0 :  "ma valeur est diff";
+		assertTrue(jaugeVerte.getValeur() == newVal - 1.0);
 	}
 	
 	
@@ -77,37 +85,85 @@ public class JaugeNaturelTest {
 	@Test
 	public void testDeplacement()
 	{
-		assertTrue(jaugeVerte.incrementer().estBleu());
+		for (int i = 0; i < 3 ; i++)
+		{
+			jaugeVerte.decrementer();
+		}
+		assertTrue(jaugeVerte.estBleu());
+		assertFalse(jaugeVerte.estVert());
+		assertFalse(jaugeVerte.estRouge());
 		
-	
+		for (int j = 0; j < 3 ; j++)
+		{
+			jaugeVerte.incrementer();
+		}
+		assertFalse(jaugeVerte.estBleu());
+		assertTrue(jaugeVerte.estVert());
+		assertFalse(jaugeVerte.estRouge());
 	}
 	
 	@Test
 	public void testInferieurIntervalle()
 	{
+		//1) depart < vigieMin < vigieMax, 
+			//utilisation de jaugeBleue avec depart = -2, vigieMin = 0 , vigieMax = 5
 		
-	
+		assertTrue(jaugeBleue.estBleu());
+		assertFalse(jaugeBleue.estRouge());
+		assertFalse(jaugeBleue.estVert());
+		
+		
+		//2) depart = vigieMin < vigieMax.
+			//utilisation de jaugeBleueBis avec depart = 0, vigieMin = 0 , vigieMax = 5
+		
+		assertTrue(jaugeBleueBis.estBleu());
+		assertFalse(jaugeBleueBis.estRouge());
+		assertFalse(jaugeBleueBis.estVert());
+		
 	}
 	
 	@Test
 	public void testLimiteVigieMaxInferieurVigieMin()
 	{
-		
-	
+		//nope nope nope
 	}
 	
 	@Test
 	public void testMaxEgaleMin()
 	{
 		
-	
+		//1) vigieMin = VigieMax < depart
+			//utilisation de jaugeLimite2 avec depart = 2, vigieMin = 5 , vigieMax = 5
+		
+		assertTrue(jaugeLimite2.estBleu());
+		assertFalse(jaugeLimite2.estVert());
+		assertFalse(jaugeLimite2.estRouge());
+		
+		//2) vigieMin = VigieMax = depart
+			// utilisation de jaugeLimite3 depart = 5, vigieMin = 5 , vigieMax = 5
+		assertTrue(jaugeLimite3.estBleu());
+		assertFalse(jaugeLimite3.estVert());
+		assertTrue(jaugeLimite3.estRouge());
 	}
 	
 	
 	@Test
 	public void testSuperieurIntervalle()
 	{
-		
+		//1) vigieMin < vigieMax < depart 
+		//utilisation de jaugeRouge avec depart = 6, vigieMin = 0 , vigieMax = 5
+	
+	assertFalse(jaugeRouge.estBleu());
+	assertTrue(jaugeRouge.estRouge());
+	assertFalse(jaugeRouge.estVert());
+	
+	
+	//2) vigieMin < vigieMax = depart
+		//utilisation de jaugeRougeBis avec depart = 5, vigieMin = 0 , vigieMax = 5
+	
+	assertFalse(jaugeRougeBis.estBleu());
+	assertTrue(jaugeRougeBis.estRouge());
+	assertFalse(jaugeRougeBis.estVert());
 	
 	}
 	
