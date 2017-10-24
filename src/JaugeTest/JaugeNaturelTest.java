@@ -45,7 +45,8 @@ public class JaugeNaturelTest {
 		long newVal = jaugeVerte.getValeur();
 		jaugeVerte.incrementer();
 		assertEquals(message, newVal+1.0,jaugeVerte.getValeur());
-	}
+	}hhgh
+	
 	
 	
 }
