@@ -59,4 +59,57 @@ public class JaugeNaturelTest {
 	
 	
 	
+	
+	@Test
+	public void testDansIntervalle() 
+	{
+		assertFalse(jaugeVerte.estBleu());
+		assertTrue(jaugeVerte.estVert());
+		assertFalse(jaugeVerte.estRouge());
+	}
+	
+	
+	/* JaugeNaturel jaugeVerte = new JaugeNaturel(0, 5, 2);
+	JaugeNaturel jaugeRouge = new JaugeNaturel(0, 5, 6);
+	JaugeNaturel jaugeBleue = new JaugeNaturel(0, 5, -2);*/
+	
+	
+	@Test
+	public void testDeplacement()
+	{
+		assertTrue(jaugeVerte.incrementer().estBleu());
+		
+	
+	}
+	
+	@Test
+	public void testInferieurIntervalle()
+	{
+		
+	
+	}
+	
+	@Test
+	public void testLimiteVigieMaxInferieurVigieMin()
+	{
+		
+	
+	}
+	
+	@Test
+	public void testMaxEgaleMin()
+	{
+		
+	
+	}
+	
+	
+	@Test
+	public void testSuperieurIntervalle()
+	{
+		
+	
+	}
+	
+	
 }
