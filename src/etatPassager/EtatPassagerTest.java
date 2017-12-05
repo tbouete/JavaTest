@@ -16,7 +16,12 @@ public class EtatPassagerTest {
 		EtatPassager etatDehors = new EtatPassager(Etat.DEHORS);
 		assertNotNull(etatAssis);
 		assertNotNull(etatDebout);    
-		assertNotNull(etatDehors);	}
+		assertNotNull(etatDehors);
+		
+	
+	
+	
+	}
 	
 		 
 	@Test
