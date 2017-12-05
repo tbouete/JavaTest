@@ -25,8 +25,6 @@ public class EtatPassagerTest {
 	@Test
 	public void testAssis() {
 		EtatPassager eTAssis = new EtatPassager(Etat.ASSIS);
-		
-		
 		assertTrue(eTAssis.estAssis());
 		assertFalse(eTAssis.estDebout());
 		assertFalse(eTAssis.estExterieur());
