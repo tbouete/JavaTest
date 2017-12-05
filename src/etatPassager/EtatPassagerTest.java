@@ -9,10 +9,17 @@ import etatPassager.EtatPassager.Etat;
 public class EtatPassagerTest {
 
 	@Test
-	public void testEtatPassager() {
-		fail("Not yet implemented");
+	public void testEtatPassager() 
+	{
+		EtatPassager etatAssis = new EtatPassager(Etat.ASSIS);
+		EtatPassager etatDebout = new EtatPassager(Etat.DEBOUT);
+		EtatPassager etatDehors = new EtatPassager(Etat.DEHORS);
+		assertNotNull(etatAssis);
+		assertNotNull(etatDebout);
+		assertNotNull(etatDehors);
 	}
-
+	
+		 
 	@Test
 	public void testAssis() {
 		EtatPassager eTAssis = new EtatPassager(Etat.ASSIS);
