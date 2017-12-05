@@ -18,7 +18,7 @@ package JaugeTest;
  * @author georgy
  * @since 2006-2007
  */
-public class JaugeNaturel {
+public class JaugeDistance {
 	  private long valeur;
 	  private final long min;
 	  private final long max;
@@ -38,7 +38,7 @@ public class JaugeNaturel {
 	   * @param vigieMax valeur maximale de l'intervalle de vigie.
 	   * @param depart   valeur initiale de la jauge.
 	   */
-	  public JaugeNaturel(long vigieMin, long vigieMax, long depart) {
+	  public JaugeDistance(long vigieMin, long vigieMax, long depart) {
 		    valeur = depart;
 		    min = vigieMin;
 		    max = vigieMax;
