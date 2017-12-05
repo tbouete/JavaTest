@@ -52,7 +52,7 @@ public class JaugeReelTest {
 	@Test
 	public void testIncrementer()
 	{
-		long newVal = jaugeVerte.getValeur();
+		float newVal = jaugeVerte.getValeur();
 		jaugeVerte.incrementer();
 		assertTrue(newVal + 1.0 == jaugeVerte.getValeur());	
 	}
@@ -60,7 +60,7 @@ public class JaugeReelTest {
 	@Test
 	public void testDecrementer()
 	{
-		long newVal = jaugeVerte.getValeur();
+		float newVal = jaugeVerte.getValeur();
 		jaugeVerte.decrementer();
 		assertTrue(jaugeVerte.getValeur() == newVal - 1.0);
 	}

@@ -10,7 +10,12 @@ public class EtatPassagerChaineTest {
 
 	@Test
 	public void testEtatPassager() {
-		fail("Not yet implemented");
+		EtatPassager etatAssis = new EtatPassager(Etat.ASSIS);
+		EtatPassager etatDebout = new EtatPassager(Etat.DEBOUT);
+		EtatPassager etatDehors = new EtatPassager(Etat.DEHORS);
+		assertNotNull(etatAssis);
+		assertNotNull(etatDebout);    
+		assertNotNull(etatDehors);
 	}
 
 	@Test
