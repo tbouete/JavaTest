@@ -18,8 +18,7 @@ public class EtatPassagerTest {
 		assertNotNull(etatDebout);    
 		assertNotNull(etatDehors);
 	
-	
-		
+
 	}
 	
 		 
