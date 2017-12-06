@@ -19,15 +19,15 @@ package JaugeTest;
  * @since 2006-2007
  */
 public class JaugeReel {
-	  private long valeur;
-	  private final long min;
-	  private final long max;
+	  public float valeur;
+	  public final float min;
+	  public final float max;
 	
 	  //Accesseurs
-	  public long getValeur() {return valeur;}
+	  public long getValeur() {return (long)(valeur * 1000);}
 	  public void setValeur(long valeur) {this.valeur = valeur;}
-	  public long getMin() {return min;}
-	  public long getMax() {return max;}
+	  public long getMin() {return (long)(min * 1000);}
+	  public long getMax() {return (long)(max * 1000);}
 	
 	
 	/**
@@ -39,9 +39,9 @@ public class JaugeReel {
 	   * @param depart   valeur initiale de la jauge.
 	   */
 	  public JaugeReel(long vigieMin, long vigieMax, long depart) {
-		    valeur = depart;
-		    min = vigieMin;
-		    max = vigieMax;
+		    valeur = (float)depart / 1000;
+		    min = (float)vigieMin / 1000;
+		    max = (float)vigieMax / 1000;
 		    /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
 		     * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
 		     */
@@ -83,7 +83,7 @@ public class JaugeReel {
 	   * L'état peut devenir supérieur à  vigieMax.
 	   */
 	  public void incrementer() {
-		  valeur++;
+		  this.valeur = (float)this.valeur + (float)0.001;
 	  }
 
 	  /**
@@ -91,7 +91,7 @@ public class JaugeReel {
 	   * L'état peut devenir inférieur à  la vigieMin.
 	   */
 	  public void decrementer() {
-		  valeur--;
+		  this.valeur = (float)this.valeur - (float)0.001;
 	  }
 
 

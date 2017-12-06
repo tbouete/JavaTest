@@ -6,14 +6,14 @@ import org.junit.Test;
 
 public class JaugeNegatifTest {
 	
-	JaugeNaturel jaugeVerte = new JaugeNaturel(0, 5, 2);
-	JaugeNaturel jaugeRouge = new JaugeNaturel(0, 5, 6);
-	JaugeNaturel jaugeRougeBis = new JaugeNaturel(0, 5, 5);
-	JaugeNaturel jaugeBleue = new JaugeNaturel(0, 5, -2);
-	JaugeNaturel jaugeBleueBis = new JaugeNaturel(0, 5, 0);
-	JaugeNaturel jaugeLimite1 = new JaugeNaturel(5, 0, 2); //vigieMax < depart < vigieMin
-	JaugeNaturel jaugeLimite2 = new JaugeNaturel(5, 5, 2); //vigieMin = VigieMax < depart 
-	JaugeNaturel jaugeLimite3 = new JaugeNaturel(5, 5, 5);
+	JaugeNegatif jaugeVerte = new JaugeNegatif(0, 5, 2);
+	JaugeNegatif jaugeRouge = new JaugeNegatif(0, 5, 6);
+	JaugeNegatif jaugeRougeBis = new JaugeNegatif(0, 5, 5);
+	JaugeNegatif jaugeBleue = new JaugeNegatif(0, 5, -2);
+	JaugeNegatif jaugeBleueBis = new JaugeNegatif(0, 5, 0);
+	JaugeNegatif jaugeLimite1 = new JaugeNegatif(5, 0, 2); //vigieMax < depart < vigieMin
+	JaugeNegatif jaugeLimite2 = new JaugeNegatif(5, 5, 2); //vigieMin = VigieMax < depart 
+	JaugeNegatif jaugeLimite3 = new JaugeNegatif(5, 5, 5);
 	
 	@Test
 	public void testEstVert()
@@ -52,17 +52,15 @@ public class JaugeNegatifTest {
 	@Test
 	public void testIncrementer()
 	{
-		long newVal = jaugeVerte.getValeur();
-		jaugeVerte.incrementer();
-		assertTrue(newVal + 1.0 == jaugeVerte.getValeur());	
+		jaugeBleueBis.incrementer();
+		assertTrue(jaugeBleueBis.estVert());
 	}
 	
 	@Test
 	public void testDecrementer()
-	{
-		long newVal = jaugeVerte.getValeur();
-		jaugeVerte.decrementer();
-		assertTrue(jaugeVerte.getValeur() == newVal - 1.0);
+	{		
+		jaugeRougeBis.decrementer();
+		assertTrue(jaugeRougeBis.estVert());
 	}
 	
 	
