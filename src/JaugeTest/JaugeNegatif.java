@@ -24,10 +24,10 @@ public class JaugeNegatif {
 	  private final long max;
 	
 	  //Accesseurs
-	  public long getValeur() {return valeur;}
-	  public void setValeur(long valeur) {this.valeur = valeur;}
-	  public long getMin() {return min;}
-	  public long getMax() {return max;}
+	  public long getValeur() {return valeur * (-1);}
+	  public void setValeur(long valeur) {this.valeur = valeur * (-1);}
+	  public long getMin() {return min * (-1);}
+	  public long getMax() {return max * (-1);}
 	
 	
 	/**
@@ -39,9 +39,9 @@ public class JaugeNegatif {
 	   * @param depart   valeur initiale de la jauge.
 	   */
 	  public JaugeNegatif(long vigieMin, long vigieMax, long depart) {
-		    valeur = depart;
-		    min = vigieMin;
-		    max = vigieMax;
+		    valeur = depart * (-1);
+		    min = vigieMin * (-1);
+		    max = vigieMax * (-1);
 		    /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
 		     * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
 		     */
@@ -55,7 +55,7 @@ public class JaugeNegatif {
 	   *
 	   */
 	  public boolean estRouge() {
-		  return valeur >= max;
+		  return valeur <= max;
 	  }
 
 	  /**
@@ -66,7 +66,7 @@ public class JaugeNegatif {
 	   */
 	  public boolean estVert() {
 		    //return !(estBleu() && estRouge());
-		    return valeur > min && valeur < max;
+		    return valeur < min && valeur > max;
 	  }
 
 	  /**
@@ -75,7 +75,7 @@ public class JaugeNegatif {
 	   * @return vrai si niveau <= vigieMin.
 	   */
 	  public boolean estBleu() {
-		  return valeur <= min;
+		  return valeur >= min;
 	  }
 
 	  /**
@@ -83,7 +83,7 @@ public class JaugeNegatif {
 	   * L'état peut devenir supérieur à  vigieMax.
 	   */
 	  public void incrementer() {
-		  valeur++;
+		  valeur--;
 	  }
 
 	  /**
@@ -91,7 +91,7 @@ public class JaugeNegatif {
 	   * L'état peut devenir inférieur à  la vigieMin.
 	   */
 	  public void decrementer() {
-		  valeur--;
+		  valeur++;
 	  }
 
 

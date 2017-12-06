@@ -24,10 +24,10 @@ public class JaugeReel {
 	  private final float max;
 	
 	  //Accesseurs
-	  public float getValeur() {return valeur;}
+	  public long getValeur() {return (long)(valeur * 1000);}
 	  public void setValeur(long valeur) {this.valeur = valeur;}
-	  public float getMin() {return min;}
-	  public float getMax() {return max;}
+	  public long getMin() {return (long)min;}
+	  public long getMax() {return (long)max;}
 	
 	
 	/**
@@ -38,10 +38,10 @@ public class JaugeReel {
 	   * @param vigieMax valeur maximale de l'intervalle de vigie.
 	   * @param depart   valeur initiale de la jauge.
 	   */
-	  public JaugeReel(float vigieMin, float vigieMax, float depart) {
-		    valeur = depart /1000;
-		    min = vigieMin /1000;
-		    max = vigieMax /1000;
+	  public JaugeReel(long vigieMin, long vigieMax, long depart) {
+		    valeur = (float)(depart / 1000);
+		    min = (float)(vigieMin / 1000);
+		    max = (float)(vigieMax / 1000);
 		    /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
 		     * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
 		     */

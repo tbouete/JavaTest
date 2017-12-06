@@ -6,14 +6,14 @@ import org.junit.Test;
 
 public class JaugeReelTest {
 	
-	JaugeNaturel jaugeVerte = new JaugeNaturel(0, 5, 2);
-	JaugeNaturel jaugeRouge = new JaugeNaturel(0, 5, 6);
-	JaugeNaturel jaugeRougeBis = new JaugeNaturel(0, 5, 5);
-	JaugeNaturel jaugeBleue = new JaugeNaturel(0, 5, -2);
-	JaugeNaturel jaugeBleueBis = new JaugeNaturel(0, 5, 0);
-	JaugeNaturel jaugeLimite1 = new JaugeNaturel(5, 0, 2); //vigieMax < depart < vigieMin
-	JaugeNaturel jaugeLimite2 = new JaugeNaturel(5, 5, 2); //vigieMin = VigieMax < depart 
-	JaugeNaturel jaugeLimite3 = new JaugeNaturel(5, 5, 5);
+	JaugeReel jaugeVerte = new JaugeReel(0, 5, 2);
+	JaugeReel jaugeRouge = new JaugeReel(0, 5, 6);
+	JaugeReel jaugeRougeBis = new JaugeReel(0, 5, 5);
+	JaugeReel jaugeBleue = new JaugeReel(0, 5, -2);
+	JaugeReel jaugeBleueBis = new JaugeReel(0, 5, 0);
+	JaugeReel jaugeLimite1 = new JaugeReel(5, 0, 2); //vigieMax < depart < vigieMin
+	JaugeReel jaugeLimite2 = new JaugeReel(5, 5, 2); //vigieMin = VigieMax < depart 
+	JaugeReel jaugeLimite3 = new JaugeReel(5, 5, 5);
 	
 	@Test
 	public void testEstVert()
