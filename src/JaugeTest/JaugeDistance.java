@@ -38,6 +38,8 @@ public class JaugeDistance {
 		     * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
 		     */
 	  }
+	  
+	  
 
 
 	  /**
