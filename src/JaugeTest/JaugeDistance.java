@@ -17,7 +17,6 @@ package JaugeTest;
  *
  * @author georgy
  * 
- * 
  * @since 2006-2007
  */
 public class JaugeDistance {

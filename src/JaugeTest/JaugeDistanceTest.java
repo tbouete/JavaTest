@@ -49,7 +49,7 @@ public class JaugeDistanceTest {
 	}
 	
 	
-	@Test
+	/*@Test
 	public void testIncrementer()
 	{
 		long newVal = jaugeVerte.getValeur();
@@ -63,7 +63,7 @@ public class JaugeDistanceTest {
 		long newVal = jaugeVerte.getValeur();
 		jaugeVerte.decrementer();
 		assertTrue(jaugeVerte.getValeur() == newVal - 1.0);
-	}
+	}*/
 	
 	
 	
