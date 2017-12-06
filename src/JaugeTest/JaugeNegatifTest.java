@@ -52,17 +52,15 @@ public class JaugeNegatifTest {
 	@Test
 	public void testIncrementer()
 	{
-		long newVal = jaugeVerte.getValeur();
-		jaugeVerte.incrementer();
-		assertTrue(newVal + 1.0 == jaugeVerte.getValeur());	
+		jaugeBleueBis.incrementer();
+		assertTrue(jaugeBleueBis.estVert());
 	}
 	
 	@Test
 	public void testDecrementer()
-	{
-		long newVal = jaugeVerte.getValeur();
-		jaugeVerte.decrementer();
-		assertTrue(jaugeVerte.getValeur() == newVal - 1.0);
+	{		
+		jaugeRougeBis.decrementer();
+		assertTrue(jaugeRougeBis.estVert());
 	}
 	
 	
