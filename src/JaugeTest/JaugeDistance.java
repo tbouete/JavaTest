@@ -19,16 +19,8 @@ package JaugeTest;
  * @since 2006-2007
  */
 public class JaugeDistance {
-	  private long valeur;
-	  private final long min;
-	  private final long max;
-	
-	  //Accesseurs
-	  public long getValeur() {return valeur;}
-	  public void setValeur(long valeur) {this.valeur = valeur;}
-	  public long getMin() {return min;}
-	  public long getMax() {return max;}
-	
+	  private long distanceMin;
+	  private long distanceMax;
 	
 	/**
 	   * Construit une instance en précisant la valeur de départ de la Jauge
@@ -39,9 +31,8 @@ public class JaugeDistance {
 	   * @param depart   valeur initiale de la jauge.
 	   */
 	  public JaugeDistance(long vigieMin, long vigieMax, long depart) {
-		    valeur = depart;
-		    min = vigieMin;
-		    max = vigieMax;
+		    this.distanceMin = depart - vigieMin;
+		    this.distanceMax = vigieMax - depart;
 		    /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
 		     * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
 		     */
@@ -54,8 +45,9 @@ public class JaugeDistance {
 	   * @return vrai si niveau >=  vigieMax.
 	   *
 	   */
-	  public boolean estRouge() {
-		  return valeur >= max;
+	  public boolean estRouge()
+	  {
+		  return distanceMax <= 0;
 	  }
 
 	  /**
@@ -64,34 +56,46 @@ public class JaugeDistance {
 	   * @return vrai si niveau appartient à  ]vigieMin, vigieMax[.
 	   *
 	   */
-	  public boolean estVert() {
+	  public boolean estVert()
+	  {
 		    //return !(estBleu() && estRouge());
-		    return valeur > min && valeur < max;
+		    return distanceMax > 0 && distanceMin > 0;
 	  }
 
+	  
+	  
 	  /**
 	   * L'état de la jauge est-il bleu ?
 	   *
 	   * @return vrai si niveau <= vigieMin.
 	   */
-	  public boolean estBleu() {
-		  return valeur <= min;
+	  public boolean estBleu()
+	  {
+		  return distanceMin <= 0;
 	  }
 
+	  
+	  
 	  /**
 	   * Incrémente le niveau d'une unité.
 	   * L'état peut devenir supérieur à  vigieMax.
 	   */
-	  public void incrementer() {
-		  valeur++;
+	  public void incrementer()
+	  {
+		  distanceMax--;
+		  distanceMin++;
 	  }
 
+	  
+	  
 	  /**
 	   * Décrémente le niveau d'une unité.
 	   * L'état peut devenir inférieur à  la vigieMin.
 	   */
-	  public void decrementer() {
-		  valeur--;
+	  public void decrementer() 
+	  {
+		  distanceMax++;
+		  distanceMin--;
 	  }
 
 
@@ -109,7 +113,9 @@ public class JaugeDistance {
 	   * valeur=-7, la concaténation donne la chaîne "<-7 [-456,23]>".
 	   */
 	  @Override
-	  public String toString() {
-		  return "<" + valeur + " [" + min + "," + max + "]>";
+	  public String toString()
+	  {
+		  return "< distance au minimum : " +distanceMin+ "; distance au maximum : "+distanceMax+" >";
+		  //return "<" + valeur + " [" + min + "," + max + "]>";
 	  }
 }
