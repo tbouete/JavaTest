@@ -6,7 +6,7 @@ package etatPassager;
  *  
  * Les instances de cette classe sont des objets constants.
  **/
-public class EtatPassager {
+public class EtatPassager implements IEtatPassager{
 	  /**
 	   * Définit les trois états possible d'un passager dans un transport.
 	   */
@@ -21,7 +21,7 @@ public class EtatPassager {
 	   * 
 	   * @param e  valeur de l'état.
 	   */
-	  public EtatPassager(Etat e) {
+	  public EtatPassager(Etat e){
 	    monEtat = e;
 	
 	    /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.

@@ -1,7 +1,5 @@
 package etatPassager;
 
-import etatPassager.EtatPassager.Etat;
-
 /**
  * Cette classe représente l'état d'un passager dans un transport.
  * Il y a un état à l'exterieur du transport (dehors) et deux états à 
@@ -9,7 +7,7 @@ import etatPassager.EtatPassager.Etat;
  *  
  * Les instances de cette classe sont des objets constants.
  **/
-public class EtatPassagerChaine {
+public class EtatPassagerChaine implements IEtatPassager{
 	  /**
 	   * Définit les trois états possible d'un passager dans un transport.
 	   */
