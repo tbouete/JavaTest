@@ -9,5 +9,4 @@ public interface Jauge
 	 public void incrementer();
 	 public void decrementer();
 	 public String toString();
-
 }

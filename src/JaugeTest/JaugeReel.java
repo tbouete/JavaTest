@@ -18,7 +18,7 @@ package JaugeTest;
  * @author georgy
  * @since 2006-2007
  */
-public class JaugeReel {
+public class JaugeReel implements Jauge{
 	  public float valeur;
 	  public final float min;
 	  public final float max;

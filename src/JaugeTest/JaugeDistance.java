@@ -1,5 +1,7 @@
 package JaugeTest;
 
+import etatPassager.IEtatPassager;
+
 /**
  * Réalisation d'une Jauge avec des entiers naturels.
  * <p>
@@ -19,7 +21,7 @@ package JaugeTest;
  * 
  * @since 2006-2007
  */
-public class JaugeDistance {
+public class JaugeDistance implements Jauge {
 	  private long distanceMin;
 	  private long distanceMax;
 	

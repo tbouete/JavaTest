@@ -18,7 +18,7 @@ package JaugeTest;
  * @author georgy
  * @since 2006-2007
  */
-public class JaugeNegatif {
+public class JaugeNegatif implements Jauge {
 	  private long valeur;
 	  private final long min;
 	  private final long max;
