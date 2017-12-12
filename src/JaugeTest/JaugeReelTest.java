@@ -63,9 +63,7 @@ public class JaugeReelTest {
 		assertTrue(jaugeRougeBis.estVert());
 	}
 	
-	
-	
-	
+
 	
 	@Test
 	public void testDansIntervalle() 
@@ -75,10 +73,6 @@ public class JaugeReelTest {
 		assertFalse(jaugeVerte.estRouge());
 	}
 	
-	
-	/* JaugeNaturel jaugeVerte = new JaugeNaturel(0, 5, 2);
-	JaugeNaturel jaugeRouge = new JaugeNaturel(0, 5, 6);
-	JaugeNaturel jaugeBleue = new JaugeNaturel(0, 5, -2);*/
 	
 	
 	@Test
