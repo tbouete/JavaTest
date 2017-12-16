@@ -38,7 +38,8 @@ public class JaugeNaturel implements Jauge {
 	   * @param vigieMax valeur maximale de l'intervalle de vigie.
 	   * @param depart   valeur initiale de la jauge.
 	   */
-	  public JaugeNaturel(long vigieMin, long vigieMax, long depart) {
+	  public JaugeNaturel(long vigieMin, long vigieMax, long depart) 
+	  {
 		    valeur = depart;
 		    min = vigieMin;
 		    max = vigieMax;

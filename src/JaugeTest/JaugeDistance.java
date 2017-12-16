@@ -1,6 +1,5 @@
 package JaugeTest;
 
-import etatPassager.IEtatPassager;
 
 /**
  * Réalisation d'une Jauge avec des entiers naturels.
@@ -33,12 +32,23 @@ public class JaugeDistance implements Jauge {
 	   * @param vigieMax valeur maximale de l'intervalle de vigie.
 	   * @param depart   valeur initiale de la jauge.
 	   */
-	  public JaugeDistance(long vigieMin, long vigieMax, long depart) {
-		    this.distanceMin = depart - vigieMin;
-		    this.distanceMax = vigieMax - depart;
-		    /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
-		     * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
-		     */
+	  public JaugeDistance(long vigieMin, long vigieMax, long depart)
+	  {
+		  try
+		  {
+			  this.distanceMin = depart - vigieMin;
+			  this.distanceMax = vigieMax - depart;
+			  /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
+			   * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
+			   */
+		  }
+		  catch(IllegalArgumentException e)
+		  {		  
+		  }
+		  catch(NullPointerException f)
+		  {
+			  
+		  }
 	  }
 	  
 	  
