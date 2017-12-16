@@ -4,5 +4,6 @@ public enum JaugeType {
 	JaugeDistance,
 	JaugeNaturel,
 	JaugeNegatif,
-	JaugeReel;
+	JaugeReel,
+	JaugeFail;
 }
