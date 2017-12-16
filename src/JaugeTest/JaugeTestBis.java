@@ -75,7 +75,7 @@ public class JaugeTestBis {
 	@Test
 	public void testExceptionControlee() throws ClassNotFoundException
 	{
-		throw new ClassNotFoundException("Attention");
+//		throw new ClassNotFoundException("Attention");
 	}
 
 	
