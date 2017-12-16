@@ -15,9 +15,10 @@ public class JaugeTest
 	
 	private Jauge creerJauge(JaugeType type, long min, long max,long depart) throws IllegalArgumentException
 	{
-		Jauge ret = null;
-		try
-		{
+		Jauge ret;
+//		Jauge ret = null;
+//		try
+//		{
 			switch(type)
 			{
 			case JaugeDistance : ret = new JaugeDistance(min, max, depart); break;
@@ -28,12 +29,12 @@ public class JaugeTest
 			}
 			
 			return ret;
-		}		
-		catch(IllegalArgumentException e)
-		{	
-			assertFalse("L'instanciation n'a pas fonctionnée car il n'y a pas correspondance de type", false);
-			return ret;
-		}
+//		}		
+//		catch(IllegalArgumentException e)
+//		{	
+//			assertFalse("L'instanciation n'a pas fonctionnée car il n'y a pas correspondance de type", false);
+//			return ret;
+//		}
 	}
 	
 	long[] jaugeVerteValues = {0, 5, 2}; 
