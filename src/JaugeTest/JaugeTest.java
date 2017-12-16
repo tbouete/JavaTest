@@ -42,7 +42,6 @@ public class JaugeTest
 			fail("La création a échoué mais n'a pas été relevé");
 			return ret;
 		}
-
 		
 	}
 	
@@ -74,86 +73,80 @@ public class JaugeTest
 	}
 	
 	@Test
+	public void testExceptionControlee() throws ClassNotFoundException
+	{
+		throw new ClassNotFoundException("Attention");
+	}
+
+	
+	@Test
 	public void testEstVert()
 	{
-		try
+		String messErreur1 = "une jauge à la limite inférieure ne doit pas être verte";
+		String messErreur2 = "une jauge à la limite supérieure ne doit pas être verte";
+		
+		for(JaugeType type : JaugeType.values())
 		{
-			String messErreur1 = "une jauge à la limite inférieure ne doit pas être verte";
-			String messErreur2 = "une jauge à la limite supérieure ne doit pas être verte";
+			Jauge jaugeVerte = this.creerJauge(type, jaugeVerteValues[0], jaugeVerteValues[1], jaugeVerteValues[2]);
+			assertTrue(jaugeVerte.estVert());
+		}
 			
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeVerte = this.creerJauge(type, jaugeVerteValues[0], jaugeVerteValues[1], jaugeVerteValues[2]);
-				assertTrue(jaugeVerte.estVert());
-			}
-				
-			for(JaugeType type : JaugeType.values())
-			{			
-				Jauge jaugeRouge = this.creerJauge(type, jaugeRougeValues[0], jaugeRougeValues[1], jaugeRougeValues[2]);
-				assertFalse(jaugeRouge.estVert());
-			}
+		for(JaugeType type : JaugeType.values())
+		{			
+			Jauge jaugeRouge = this.creerJauge(type, jaugeRougeValues[0], jaugeRougeValues[1], jaugeRougeValues[2]);
+			assertFalse(jaugeRouge.estVert());
+		}
+		
+		for(JaugeType type : JaugeType.values())
+		{
+			Jauge jaugeBleue = this.creerJauge(type, jaugeBleueValues[0], jaugeBleueValues[1], jaugeBleueValues[2]);
+			assertFalse(jaugeBleue.estVert());
+		}
 			
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeBleue = this.creerJauge(type, jaugeBleueValues[0], jaugeBleueValues[1], jaugeBleueValues[2]);
-				assertFalse(jaugeBleue.estVert());
-			}
-				
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeBleueBis = this.creerJauge(type, jaugeBleueBisValues[0], jaugeBleueBisValues[1], jaugeBleueBisValues[2]);
-				assertFalse(jaugeBleueBis.estVert());
-			}
-				
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeRougeBis = this.creerJauge(type, jaugeRougeBisValues[0], jaugeRougeBisValues[1], jaugeRougeBisValues[2]);
-				assertFalse(jaugeRougeBis.estVert());
-			}
+		for(JaugeType type : JaugeType.values())
+		{
+			Jauge jaugeBleueBis = this.creerJauge(type, jaugeBleueBisValues[0], jaugeBleueBisValues[1], jaugeBleueBisValues[2]);
+			assertFalse(jaugeBleueBis.estVert());
+		}
+			
+		for(JaugeType type : JaugeType.values())
+		{
+			Jauge jaugeRougeBis = this.creerJauge(type, jaugeRougeBisValues[0], jaugeRougeBisValues[1], jaugeRougeBisValues[2]);
+			assertFalse(jaugeRougeBis.estVert());
+		}
 					
-		}
-		catch(NullPointerException n)
-		{
-			
-		}
+		
 	}
 	
 	@Test
 	public void testEstBleu()
 	{	
-		try
-		{
-			String messErreur1 = "valeur égale à la limite inférieur";
+		String messErreur1 = "valeur égale à la limite inférieur";
 		
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeVerte = this.creerJauge(type, jaugeVerteValues[0], jaugeVerteValues[1], jaugeVerteValues[2]);
-				assertFalse(jaugeVerte.estBleu());
-			}
-			
-				
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeRouge = this.creerJauge(type, jaugeRougeValues[0], jaugeRougeValues[1], jaugeRougeValues[2]);
-				assertFalse(jaugeRouge.estBleu());
-			}
-					
-			
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeBleue = this.creerJauge(type, jaugeBleueValues[0], jaugeBleueValues[1], jaugeBleueValues[2]);
-				assertTrue(jaugeBleue.estBleu());
-			}
-				
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeBleueBis = this.creerJauge(type, jaugeBleueBisValues[0], jaugeBleueBisValues[1], jaugeBleueBisValues[2]);
-				assertTrue(messErreur1, jaugeBleueBis.estBleu());
-			}
-		}
-		catch(NullPointerException n)
+		for(JaugeType type : JaugeType.values())
 		{
+			Jauge jaugeVerte = this.creerJauge(type, jaugeVerteValues[0], jaugeVerteValues[1], jaugeVerteValues[2]);
+			assertFalse(jaugeVerte.estBleu());
+		}
+		
 			
+		for(JaugeType type : JaugeType.values())
+		{
+			Jauge jaugeRouge = this.creerJauge(type, jaugeRougeValues[0], jaugeRougeValues[1], jaugeRougeValues[2]);
+			assertFalse(jaugeRouge.estBleu());
+		}
+				
+		
+		for(JaugeType type : JaugeType.values())
+		{
+			Jauge jaugeBleue = this.creerJauge(type, jaugeBleueValues[0], jaugeBleueValues[1], jaugeBleueValues[2]);
+			assertTrue(jaugeBleue.estBleu());
+		}
+			
+		for(JaugeType type : JaugeType.values())
+		{
+			Jauge jaugeBleueBis = this.creerJauge(type, jaugeBleueBisValues[0], jaugeBleueBisValues[1], jaugeBleueBisValues[2]);
+			assertTrue(messErreur1, jaugeBleueBis.estBleu());
 		}
 			
 	}
@@ -162,39 +155,33 @@ public class JaugeTest
 	@Test
 	public void testEstRouge()
 	{
-		try
+		
+		String messErreur1 = "valeur égale a la limite supérieur";
+		
+		for(JaugeType type : JaugeType.values())
 		{
-			String messErreur1 = "valeur égale a la limite supérieur";
-			
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeVerte = this.creerJauge(type, jaugeVerteValues[0], jaugeVerteValues[1], jaugeVerteValues[2]);
-				assertFalse(jaugeVerte.estRouge());
-			}
-			
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeRouge = this.creerJauge(type, jaugeRougeValues[0], jaugeRougeValues[1], jaugeRougeValues[2]);
-				assertTrue(jaugeRouge.estRouge());
-			}
-				
-			
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeBleue = this.creerJauge(type, jaugeBleueValues[0], jaugeBleueValues[1], jaugeBleueValues[2]);
-				assertFalse(jaugeBleue.estRouge());
-			}
-				
-			
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeRougeBis = this.creerJauge(type, jaugeRougeBisValues[0], jaugeRougeBisValues[1], jaugeRougeBisValues[2]);
-				assertTrue(messErreur1, jaugeRougeBis.estRouge());
-			}
+			Jauge jaugeVerte = this.creerJauge(type, jaugeVerteValues[0], jaugeVerteValues[1], jaugeVerteValues[2]);
+			assertFalse(jaugeVerte.estRouge());
 		}
-		catch(NullPointerException n)
+		
+		for(JaugeType type : JaugeType.values())
 		{
+			Jauge jaugeRouge = this.creerJauge(type, jaugeRougeValues[0], jaugeRougeValues[1], jaugeRougeValues[2]);
+			assertTrue(jaugeRouge.estRouge());
+		}
 			
+		
+		for(JaugeType type : JaugeType.values())
+		{
+			Jauge jaugeBleue = this.creerJauge(type, jaugeBleueValues[0], jaugeBleueValues[1], jaugeBleueValues[2]);
+			assertFalse(jaugeBleue.estRouge());
+		}
+			
+		
+		for(JaugeType type : JaugeType.values())
+		{
+			Jauge jaugeRougeBis = this.creerJauge(type, jaugeRougeBisValues[0], jaugeRougeBisValues[1], jaugeRougeBisValues[2]);
+			assertTrue(messErreur1, jaugeRougeBis.estRouge());
 		}
 	}
 	
@@ -202,36 +189,22 @@ public class JaugeTest
 	@Test
 	public void testIncrementer()
 	{
-		try
+		for(JaugeType type : JaugeType.values())
 		{
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeBleueBis = this.creerJauge(type, jaugeBleueBisValues[0], jaugeBleueBisValues[1], jaugeBleueBisValues[2]);
-				jaugeBleueBis.incrementer();
-				assertTrue(jaugeBleueBis.estVert());
-			}	
-		}
-		catch(NullPointerException n)
-		{
-			
-		}
+			Jauge jaugeBleueBis = this.creerJauge(type, jaugeBleueBisValues[0], jaugeBleueBisValues[1], jaugeBleueBisValues[2]);
+			jaugeBleueBis.incrementer();
+			assertTrue(jaugeBleueBis.estVert());
+		}		
 	}
 	
 	@Test
 	public void testDecrementer()
-	{
-		try
+	{				
+		for(JaugeType type : JaugeType.values())
 		{
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeRougeBis = this.creerJauge(type, jaugeRougeBisValues[0], jaugeRougeBisValues[1], jaugeRougeBisValues[2]);
-				jaugeRougeBis.decrementer();
-				assertTrue(jaugeRougeBis.estVert());
-			}
-		}
-		catch(NullPointerException n)
-		{
-			
+			Jauge jaugeRougeBis = this.creerJauge(type, jaugeRougeBisValues[0], jaugeRougeBisValues[1], jaugeRougeBisValues[2]);
+			jaugeRougeBis.decrementer();
+			assertTrue(jaugeRougeBis.estVert());
 		}
 	}
 	
@@ -239,19 +212,12 @@ public class JaugeTest
 	@Test
 	public void testDansIntervalle() 
 	{
-		try
+		for(JaugeType type : JaugeType.values())
 		{
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeVerte = this.creerJauge(type, jaugeVerteValues[0], jaugeVerteValues[1], jaugeVerteValues[2]);
-				assertFalse(jaugeVerte.estBleu());
-				assertTrue(jaugeVerte.estVert());
-				assertFalse(jaugeVerte.estRouge());
-			}
-		}
-		catch(NullPointerException n)
-		{
-			
+			Jauge jaugeVerte = this.creerJauge(type, jaugeVerteValues[0], jaugeVerteValues[1], jaugeVerteValues[2]);
+			assertFalse(jaugeVerte.estBleu());
+			assertTrue(jaugeVerte.estVert());
+			assertFalse(jaugeVerte.estRouge());
 		}
 	}
 	
@@ -260,32 +226,25 @@ public class JaugeTest
 	@Test
 	public void testDeplacement()
 	{
-		try
+		for(JaugeType type : JaugeType.values())
 		{
-			for(JaugeType type : JaugeType.values())
+			Jauge jaugeVerte = this.creerJauge(type, jaugeVerteValues[0], jaugeVerteValues[1], jaugeVerteValues[2]);
+			for (int i = 0; i < 3 ; i++)
 			{
-				Jauge jaugeVerte = this.creerJauge(type, jaugeVerteValues[0], jaugeVerteValues[1], jaugeVerteValues[2]);
-				for (int i = 0; i < 3 ; i++)
-				{
-					jaugeVerte.decrementer();
-				}
-				assertTrue(jaugeVerte.estBleu());
-				assertFalse(jaugeVerte.estVert());
-				assertFalse(jaugeVerte.estRouge());
-					
-				
-				for (int j = 0; j < 3 ; j++)
-				{
-					jaugeVerte.incrementer();
-				}
-				assertFalse(jaugeVerte.estBleu());
-				assertTrue(jaugeVerte.estVert());
-				assertFalse(jaugeVerte.estRouge());
+				jaugeVerte.decrementer();
 			}
-		}
-		catch(NullPointerException n)
-		{
+			assertTrue(jaugeVerte.estBleu());
+			assertFalse(jaugeVerte.estVert());
+			assertFalse(jaugeVerte.estRouge());
+				
 			
+			for (int j = 0; j < 3 ; j++)
+			{
+				jaugeVerte.incrementer();
+			}
+			assertFalse(jaugeVerte.estBleu());
+			assertTrue(jaugeVerte.estVert());
+			assertFalse(jaugeVerte.estRouge());
 		}
 	}
 	
@@ -294,33 +253,26 @@ public class JaugeTest
 	{
 		//1) depart < vigieMin < vigieMax, 
 			//utilisation de jaugeBleue avec depart = -2, vigieMin = 0 , vigieMax = 5
-		try
-		{
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeBleue = this.creerJauge(type, jaugeBleueValues[0], jaugeBleueValues[1], jaugeBleueValues[2]);
-				assertTrue(jaugeBleue.estBleu());
-				assertFalse(jaugeBleue.estRouge());
-				assertFalse(jaugeBleue.estVert());
-			}
-
-			
-			//2) depart = vigieMin < vigieMax.
-				//utilisation de jaugeBleueBis avec depart = 0, vigieMin = 0 , vigieMax = 5
-			
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeBleueBis = this.creerJauge(type, jaugeBleueBisValues[0], jaugeBleueBisValues[1], jaugeBleueBisValues[2]);
-				assertTrue(jaugeBleueBis.estBleu());
-				assertFalse(jaugeBleueBis.estRouge());
-				assertFalse(jaugeBleueBis.estVert());
-			}
-		}
-		catch(NullPointerException n)
-		{
-			
-		}
 		
+		for(JaugeType type : JaugeType.values())
+		{
+			Jauge jaugeBleue = this.creerJauge(type, jaugeBleueValues[0], jaugeBleueValues[1], jaugeBleueValues[2]);
+			assertTrue(jaugeBleue.estBleu());
+			assertFalse(jaugeBleue.estRouge());
+			assertFalse(jaugeBleue.estVert());
+		}
+
+		
+		//2) depart = vigieMin < vigieMax.
+			//utilisation de jaugeBleueBis avec depart = 0, vigieMin = 0 , vigieMax = 5
+		
+		for(JaugeType type : JaugeType.values())
+		{
+			Jauge jaugeBleueBis = this.creerJauge(type, jaugeBleueBisValues[0], jaugeBleueBisValues[1], jaugeBleueBisValues[2]);
+			assertTrue(jaugeBleueBis.estBleu());
+			assertFalse(jaugeBleueBis.estRouge());
+			assertFalse(jaugeBleueBis.estVert());
+		}
 	
 	}
 
@@ -330,35 +282,35 @@ public class JaugeTest
 	@Test
 	public void testSuperieurIntervalle()
 	{
-		try
+		//1) vigieMin < vigieMax < depart 
+		//utilisation de jaugeRouge avec depart = 6, vigieMin = 0 , vigieMax = 5
+	
+		for(JaugeType type : JaugeType.values())
 		{
-			//1) vigieMin < vigieMax < depart 
-			//utilisation de jaugeRouge avec depart = 6, vigieMin = 0 , vigieMax = 5
-		
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeRouge = this.creerJauge(type, jaugeRougeValues[0], jaugeRougeValues[1], jaugeRougeValues[2]);
-				assertFalse(jaugeRouge.estBleu());
-				assertTrue(jaugeRouge.estRouge());
-				assertFalse(jaugeRouge.estVert());
-			}
-			
-		
-		
-		//2) vigieMin < vigieMax = depart
-			//utilisation de jaugeRougeBis avec depart = 5, vigieMin = 0 , vigieMax = 5
-		
-			for(JaugeType type : JaugeType.values())
-			{
-				Jauge jaugeRougeBis = this.creerJauge(type, jaugeRougeBisValues[0], jaugeRougeBisValues[1], jaugeRougeBisValues[2]);
-				assertFalse(jaugeRougeBis.estBleu());
-				assertTrue(jaugeRougeBis.estRouge());
-				assertFalse(jaugeRougeBis.estVert());
-			}
+			Jauge jaugeRouge = this.creerJauge(type, jaugeRougeValues[0], jaugeRougeValues[1], jaugeRougeValues[2]);
+			assertFalse(jaugeRouge.estBleu());
+			assertTrue(jaugeRouge.estRouge());
+			assertFalse(jaugeRouge.estVert());
 		}
-		catch(NullPointerException n)
+		
+	
+	
+	//2) vigieMin < vigieMax = depart
+		//utilisation de jaugeRougeBis avec depart = 5, vigieMin = 0 , vigieMax = 5
+	
+		for(JaugeType type : JaugeType.values())
 		{
-			
+			Jauge jaugeRougeBis = this.creerJauge(type, jaugeRougeBisValues[0], jaugeRougeBisValues[1], jaugeRougeBisValues[2]);
+			assertFalse(jaugeRougeBis.estBleu());
+			assertTrue(jaugeRougeBis.estRouge());
+			assertFalse(jaugeRougeBis.estVert());
 		}
 	}
+	
+	public static void main(String[] args) 
+	{
+		
+
+	}
+	
 }
