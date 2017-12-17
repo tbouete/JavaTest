@@ -18,7 +18,10 @@ public class PassagerStandard {
 	  public int getDestination() {return destination;}
 	  public void setDestination(int destination) {this.destination = destination;}
 
-	
+	  public void monterDans(Autobus autobus)
+	  {
+		  
+	  }
 	
 
 
