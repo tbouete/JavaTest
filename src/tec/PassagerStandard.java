@@ -33,9 +33,7 @@ public class PassagerStandard implements Passager, Usager
 	   */
 	  public boolean estDehors()
 	  {
-		  boolean etat = this.monEtat.estExterieur();
-		  return etat ;
-		  
+		 return this.monEtat.estExterieur();
 	  }	  
 	  
 	
@@ -46,8 +44,7 @@ public class PassagerStandard implements Passager, Usager
 	   */
 	  public boolean estAssis()
 	  {
-		  boolean etat = this.monEtat.estAssis();
-		  return etat ;
+		  return this.monEtat.estAssis();
 	  }
 	    
 	  
@@ -58,8 +55,7 @@ public class PassagerStandard implements Passager, Usager
 	   */
 	  public boolean estDebout()
 	  { 
-		  boolean etat = this.monEtat.estDebout();
-		  return etat ;
+		  return this.monEtat.estDebout();
 		  
 	  }
 	  
@@ -134,10 +130,10 @@ public class PassagerStandard implements Passager, Usager
 	  {
 		  if (t instanceof Autobus)
 		  {
-			  ((Autobus)t).demanderPlaceDebout(this);
+			  ((Autobus)t).demanderPlaceAssise(this);
 			  if (this.estDehors())
 			  {
-				  ((Autobus)t).demanderPlaceAssise(this);
+				  ((Autobus)t).demanderPlaceDebout(this);
 			  }
 			  else if(this.estDehors())
 			 {
