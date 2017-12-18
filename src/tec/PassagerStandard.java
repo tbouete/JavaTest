@@ -130,8 +130,11 @@ public class PassagerStandard implements Passager, Usager
 	  {
 		  if (t instanceof Autobus)
 		  {
-			  ((Autobus)t).demanderPlaceAssise(this);
 			  if (this.estDehors())
+			  {
+				  ((Autobus)t).demanderPlaceAssise(this);
+			  }
+			  else if (this.estDehors())
 			  {
 				  ((Autobus)t).demanderPlaceDebout(this);
 			  }

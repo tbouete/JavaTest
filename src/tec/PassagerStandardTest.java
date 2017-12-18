@@ -112,28 +112,88 @@ public class PassagerStandardTest
 
 
 
-	//	@Test
-	//	  public void testNouvelArret(Bus bus, int numeroArret)
-	//	  {
-	//		  if (numeroArret == this.destination)
-	//		  {
-	//			  ((Autobus)bus).demanderSortie(this);
-	//		  }		  
-	//	  }
-
-	//	  
-	//	  
-	//	  
-	//
 	@Test
-	public void testMonterDans(Transport t) throws UsagerInvalideException
+	public void testNouvelArret()
+	{
+		PassagerStandard harry = new PassagerStandard("Harry",1);
+		PassagerStandard hermione = new PassagerStandard("Hermione",3);
+		PassagerStandard ron = new PassagerStandard("Ron",6);
+		PassagerStandard neuville = new PassagerStandard("Neuville",10);
+
+		FauxBusDebout edwige = new FauxBusDebout();
+		FauxBusAssis pattenrond = new FauxBusAssis();
+		FauxBusVide coquecigrue = new FauxBusVide();
+		FauxBusPlein trevor = new FauxBusPlein();
+
+		try
+		{
+			harry.monterDans(edwige);
+			edwige.allerArretSuivant();
+			assertTrue(harry.estDehors());	
+		}
+		catch(UsagerInvalideException e)
+		{
+			e.printStackTrace();				
+		}
+
+		
+		
+		try
+		{
+			hermione.monterDans(edwige);
+			pattenrond.allerArretSuivant();
+			assertTrue(hermione.estDehors());
+		}
+		catch(UsagerInvalideException e)
+		{
+			e.printStackTrace();				
+		}
+
+
+
+
+		try
+		{
+			ron.monterDans(coquecigrue);
+			for(int i = 0; i < 6 ; i++)
+			{
+				coquecigrue.allerArretSuivant();
+			}
+			assertTrue(ron.estDehors());
+		}
+		catch(UsagerInvalideException e)
+		{
+			e.printStackTrace();				
+		}
+
+
+
+		try
+		{
+			neuville.monterDans(trevor);
+			trevor.allerArretSuivant();
+			assertTrue(neuville.estDehors());
+		}
+		catch(UsagerInvalideException e)
+		{
+			e.printStackTrace();				
+		}
+
+
+	}		  
+
+
+
+
+	@Test
+	public void testMonterDans()
 	{
 		PassagerStandard harry = new PassagerStandard("Harry",10);
 		FauxBusDebout edwige = new FauxBusDebout();
 		try
 		{	
 			harry.monterDans(edwige);
-			assertTrue(!harry.estDehors());
+			assertFalse(harry.estDehors());
 		}
 
 		catch(UsagerInvalideException e)
@@ -148,7 +208,7 @@ public class PassagerStandardTest
 		try
 		{	
 			hermione.monterDans(pattenrond);
-			assertTrue(!hermione.estDehors());
+			assertTrue(hermione.estDehors());
 		}
 
 		catch(UsagerInvalideException e)
@@ -162,7 +222,7 @@ public class PassagerStandardTest
 		try
 		{	
 			ron.monterDans(coquecigrue);
-			assertTrue(!ron.estDehors());
+			assertFalse(ron.estDehors());
 		}
 
 		catch(UsagerInvalideException e)
@@ -176,7 +236,7 @@ public class PassagerStandardTest
 		try
 		{	
 			neuville.monterDans(trevor);
-			assertTrue(!neuville.estDehors());
+			assertFalse(neuville.estDehors());
 		}
 
 		catch(UsagerInvalideException e)
@@ -184,8 +244,8 @@ public class PassagerStandardTest
 			e.printStackTrace();				
 		}
 
-		
-		
+
+
 	}
 
 }

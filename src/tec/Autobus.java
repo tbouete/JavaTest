@@ -28,7 +28,10 @@ public class Autobus implements Transport, Bus
 	{
 		if(arretActuel + 1 == this.ARRET_FINAl) throw new UsagerInvalideException("Cet autobus est déjà au terminus");
 		this.arretActuel++;
-		for(Passager p : this.listPassagers) p.nouvelArret(this, this.arretActuel);
+		for(int i = 0; i < listPassagers.size() ; i++) 
+		{
+			this.listPassagers.get(i).nouvelArret(this, this.arretActuel);
+		}
 	}
 	
 	
@@ -61,9 +64,11 @@ public class Autobus implements Transport, Bus
 	  
 	  public void demanderPlaceAssise(Passager p)
 	  {
-		  if (p instanceof PassagerStandard) {
+		  if (p instanceof PassagerStandard) 
+		  {
 			  PassagerStandard pS = (PassagerStandard) p;
-			  if(this.aPlaceAssise()){
+			  if(this.aPlaceAssise())
+			  {
 				  pS.accepterPlaceAssise();
 				  this.nbPlacesAssises.incrementer();
 				  this.listPassagers.add(pS);
