@@ -29,8 +29,11 @@ public class PassagerStandardTest
 	  public void testEstDehors()
 	  {
 		 Jayne.accepterPlaceAssise();
+		 Inara.accepterPlaceDebout();
+		 
 		 assertTrue(Kaylee.estDehors());
 		 assertFalse(Jayne.estDehors());
+		 assertFalse(Inara.estDehors());
 	  }	  
 	  
 	
@@ -39,8 +42,12 @@ public class PassagerStandardTest
 	  public void testEstAssis()
 	  {
 		  Jayne.accepterPlaceAssise();
+		  Inara.accepterPlaceDebout();
+		  
 		  assertFalse(Kaylee.estAssis());
 		  assertTrue(Jayne.estAssis());
+		  assertFalse(Inara.estAssis());
+		  
 	  }
 	    
 	  
@@ -48,20 +55,30 @@ public class PassagerStandardTest
 	  @Test
 	  public void testEstDebout()
 	  {
-		  Jayne.accepterPlaceDebout();
-		  assertFalse(Kaylee.estAssis());
-		  assertTrue(Jayne.estAssis());
+		  Jayne.accepterPlaceAssise();
+		  Inara.accepterPlaceDebout();
+		  
+		  assertFalse(Kaylee.estDebout());
+		  assertFalse(Jayne.estDebout());
+		  assertTrue(Inara.estDebout());
 	  }
 	  
-//	  
-//	  
-//	  @Test
-//	  public void testAccepterSortie()
-//	  {
-//		  this.monEtat = new EtatPassager(etatPassager.EtatPassager.Etat.DEHORS);
-//	  }
-//	  
-//	  
+	  
+	  
+	  @Test
+	  public void testAccepterSortie()
+	  {
+		  Kaylee.accepterPlaceAssise();
+		  Jayne.accepterSortie();
+		  Inara.accepterPlaceDebout();
+		  
+		  assertFalse(Kaylee.estDehors());
+		  assertTrue(Jayne.estDehors());
+		  assertFalse(Inara.estDehors());
+		  
+	  }
+	  
+	  
 //	  
 //	  
 //	  @Test
