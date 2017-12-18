@@ -7,6 +7,7 @@ import JaugeTest.JaugeNaturel;
 
 public class Autobus implements Transport, Bus
 {
+	private final int ARRET_FINAl = 10;
 	private int arretActuel = 0;
 	private JaugeNaturel nbPlacesAssises;
 	private JaugeNaturel nbPlacesDebout;
@@ -25,6 +26,7 @@ public class Autobus implements Transport, Bus
 
 	public void allerArretSuivant() throws UsagerInvalideException
 	{
+		if(arretActuel + 1 == this.ARRET_FINAl) throw new UsagerInvalideException("Cet autobus est déjà au terminus");
 		this.arretActuel++;
 		for(Passager p : this.listPassagers) p.nouvelArret(this, this.arretActuel);
 	}
@@ -179,6 +181,9 @@ public class Autobus implements Transport, Bus
 		return listPassagers;
 	}
 
+	public int getARRET_FINAL(){
+		return ARRET_FINAl;
+	}
 	
 	  
 
