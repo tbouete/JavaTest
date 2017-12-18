@@ -1,7 +1,8 @@
 package tec;
 
 
-public class FauxBusPlein {
+public class FauxBusPlein implements Transport
+{
 	String message = "???";
 
 	boolean aPlaceAssise() {

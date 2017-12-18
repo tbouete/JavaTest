@@ -125,20 +125,65 @@ public class PassagerStandardTest
 	//	  
 	//	  
 	//
-	//		@Test
-	//	  public void testMonterDans(Transport t) throws UsagerInvalideException
-	//	  {
-	//		  if (t instanceof Autobus)
-	//		  {
-	//			  ((Autobus)t).demanderPlaceDebout(this);
-	//			  if (this.estDehors())
-	//			  {
-	//				  ((Autobus)t).demanderPlaceAssise(this);
-	//			  }
-	//			  else if(this.estDehors())
-	//			 {
-	//				  throw new UsagerInvalideException ("Il n'y a plus de place disponible.");
-	//			 }
-	//		  }
+	@Test
+	public void testMonterDans(Transport t) throws UsagerInvalideException
+	{
+		PassagerStandard harry = new PassagerStandard("Harry",10);
+		FauxBusDebout edwige = new FauxBusDebout();
+		try
+		{	
+			harry.monterDans(edwige);
+			assertTrue(!harry.estDehors());
+		}
+
+		catch(UsagerInvalideException e)
+		{
+			e.printStackTrace();				
+		}
+
+
+
+		PassagerStandard hermione = new PassagerStandard("Hermione",10);
+		FauxBusPlein pattenrond = new FauxBusPlein();
+		try
+		{	
+			hermione.monterDans(pattenrond);
+			assertTrue(!hermione.estDehors());
+		}
+
+		catch(UsagerInvalideException e)
+		{
+			e.printStackTrace();				
+		}
+
+
+		PassagerStandard ron = new PassagerStandard("Ron",10);
+		FauxBusVide coquecigrue = new FauxBusVide();
+		try
+		{	
+			ron.monterDans(coquecigrue);
+			assertTrue(!ron.estDehors());
+		}
+
+		catch(UsagerInvalideException e)
+		{
+			e.printStackTrace();				
+		}
+
+
+		PassagerStandard neuville = new PassagerStandard("Neuville",10);
+		FauxBusAssis trevor = new FauxBusAssis();
+		try
+		{	
+			neuville.monterDans(trevor);
+			assertTrue(!neuville.estDehors());
+		}
+
+		catch(UsagerInvalideException e)
+		{
+			e.printStackTrace();				
+		}
+
+	}
 
 }

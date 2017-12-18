@@ -2,7 +2,8 @@ package tec;
 
 
 
-public class FauxBusDebout {
+public class FauxBusDebout implements Transport
+{
 	String message = "???";
 
 	boolean aPlaceAssise() {
