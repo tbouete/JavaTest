@@ -48,7 +48,7 @@ public class PassagerStandardTest
 	  @Test
 	  public void testEstDebout()
 	  {
-		  Jayne.accepterPlaceAssise();
+		  Jayne.accepterPlaceDebout();
 		  assertFalse(Kaylee.estAssis());
 		  assertTrue(Jayne.estAssis());
 	  }
