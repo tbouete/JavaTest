@@ -126,7 +126,7 @@ public class PassagerStandard implements Passager, Usager
 	   * @throws si l'état de l'usager est incohérent par rapport à sa demande.
 	   */
 
-	  public void monterDans(Transport t) throws UsagerInvalideException
+	  public void monterDans(Bus b) throws UsagerInvalideException
 	  {
 		  if (t instanceof Autobus)
 		  {
