@@ -143,6 +143,12 @@ public class PassagerStandard implements Passager, Usager
 		  
 	  }
 
+
+	@Override
+	public String toString() {
+		return new String("Le passager " + this.nom + " est actuellement " + this.monEtat + " et descend à l'arret n°" + this.destination);
+	}
+
 	
 
 }
