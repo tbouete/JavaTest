@@ -193,6 +193,7 @@ public class PassagerStandardTest
 		try
 		{	
 			harry.monterDans(edwige);
+			System.out.println(harry.monEtat);
 			assertFalse(harry.estDehors());
 		}
 
