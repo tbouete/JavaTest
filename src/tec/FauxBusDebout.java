@@ -12,6 +12,8 @@ public class FauxBusDebout {
 	boolean aPlaceDebout() {
 		return true;
 	}
+	
+	
 
 	void demanderPlaceAssise(Passager p) {
 		message = ":demanderPlaceAssise:";
