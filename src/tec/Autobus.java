@@ -1,15 +1,34 @@
 package tec;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import JaugeTest.JaugeNaturel;
+import etatPassager.EtatPassager;
+import etatPassager.EtatPassager.Etat;
+
 public class Autobus implements Transport, Bus
 {
-
-	public Autobus() {
-		// TODO Auto-generated constructor stub
+	private int arretActuel = 0;
+	private JaugeNaturel nbPlacesAssises;
+	private JaugeNaturel nbPlacesDebout;
+	private List<Passager> listPassagers;
+	
+	public Autobus(int nbPlacesAssisesMax, int nbPlacesDeboutsMax){
+		this.listPassagers = new ArrayList<>();
+		this.nbPlacesAssises = new JaugeNaturel(0, nbPlacesAssisesMax, 0);
+		this.nbPlacesDebout = new JaugeNaturel(0, nbPlacesDeboutsMax, 0);
 	}
+	
+	public Autobus() {
+		this(0, 0);
+	}
+	
 
 	public void allerArretSuivant() throws UsagerInvalideException
 	{
-		
+		this.arretActuel++;
+		for(Passager p : this.listPassagers) p.nouvelArret(this, this.arretActuel);
 	}
 	
 	
@@ -17,11 +36,7 @@ public class Autobus implements Transport, Bus
 	   * vrai s'il existe des places assises.
 	   * @return vrai s'il existe des places assises
 	   */
-	  public boolean aPlaceAssise()
-	  {
-		  boolean wesh = false;
-		  return false;
-	  }
+	  public boolean aPlaceAssise(){ return !this.nbPlacesAssises.estRouge(); }
 
 	  
 	  
@@ -31,12 +46,7 @@ public class Autobus implements Transport, Bus
 	   * vrai s'il existe des places debouts.
 	   * @return vrai s'il existe des places debouts
 	   */
-	  public boolean aPlaceDebout()
-	  { 
-		  boolean wesh = false;
-		  return false;
-		  
-	  }
+	  public boolean aPlaceDebout(){ return !this.nbPlacesDebout.estRouge(); }
 
 	  
 	  
@@ -48,9 +58,16 @@ public class Autobus implements Transport, Bus
 	   * Cette méthode est appelée par Passager.
 	   * @param p le passager
 	   */
-	  public void demanderPlaceAssise(PassagerStandard p)
+	  
+	  public void demanderPlaceAssise(Passager p)
 	  {
-		  
+		  if (p instanceof PassagerStandard) {
+			  PassagerStandard pS = (PassagerStandard) p;
+			  if(this.aPlaceAssise()){
+				  pS.monEtat = new EtatPassager(Etat.ASSIS);
+				  this.nbPlacesAssises.incrementer();
+			  }
+		  }
 	  }
 	  
 	  
@@ -68,7 +85,13 @@ public class Autobus implements Transport, Bus
 	   */
 	  public void demanderPlaceDebout(Passager p)
 	  {
-		  
+		  if (p instanceof PassagerStandard) {
+			  PassagerStandard pS = (PassagerStandard) p;
+			  if(this.aPlaceDebout()){
+				  pS.monEtat = new EtatPassager(Etat.DEBOUT);
+				  this.nbPlacesDebout.incrementer();
+			  }
+		  }
 	  }
 
 
@@ -83,7 +106,14 @@ public class Autobus implements Transport, Bus
 	   */
 	  public void demanderChangerEnDebout(Passager p)
 	  {
-		  
+		  if (p instanceof PassagerStandard) {
+				PassagerStandard pS = (PassagerStandard) p;
+				if(this.aPlaceDebout()){
+					pS.monEtat = new EtatPassager(Etat.DEBOUT);
+					this.nbPlacesAssises.decrementer();
+					this.nbPlacesDebout.incrementer();
+				}
+		  }
 	  }
 
 	  
@@ -98,7 +128,14 @@ public class Autobus implements Transport, Bus
 	   */
 	  public void demanderChangerEnAssis(Passager p)
 	  {
-		  
+		  if (p instanceof PassagerStandard) {
+				PassagerStandard pS = (PassagerStandard) p;
+				if(this.aPlaceAssise()){
+					pS.monEtat = new EtatPassager(Etat.DEBOUT);
+					this.nbPlacesAssises.incrementer();
+					this.nbPlacesDebout.decrementer();
+		  }
+		  }
 	  }
 
 	  
@@ -111,8 +148,13 @@ public class Autobus implements Transport, Bus
 	   */
 	  public void demanderSortie(Passager p)
 	  {
-		  
+		  if (p instanceof PassagerStandard) {
+			PassagerStandard pS = (PassagerStandard) p;
+			if(pS.monEtat.estDebout()){ this.nbPlacesDebout.decrementer(); }
+			if(pS.monEtat.estAssis()){ this.nbPlacesAssises.decrementer(); }
+		  	pS.monEtat = new EtatPassager(Etat.DEHORS);
+		  }
 	  }
-	  
+
 	  
 }
