@@ -19,9 +19,9 @@ public class Autobus implements Transport, Bus
 		this.nbPlacesDebout = new JaugeNaturel(0, nbPlacesDeboutsMax, 0);
 	}
 	
-	public Autobus() {
-		this(0, 0);
-	}
+	public Autobus(int placeAssisesEtDebout){ this(placeAssisesEtDebout, placeAssisesEtDebout); }
+	
+	public Autobus() { this(0, 0); }
 	
 
 	public void allerArretSuivant() throws UsagerInvalideException
