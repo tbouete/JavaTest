@@ -3,7 +3,7 @@ package tec;
 import java.util.ArrayList;
 import java.util.List;
 
-import JaugeTest.JaugeNaturel;
+import tec.JaugeNaturel;
 
 public class Autobus implements Transport, Bus
 {

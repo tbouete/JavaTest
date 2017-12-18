@@ -1,7 +1,7 @@
 package tec;
 
-import etatPassager.EtatPassager;
-import etatPassager.EtatPassager.Etat;
+import tec.EtatPassager;
+import tec.EtatPassager.Etat;
 
 public class PassagerStandard implements Passager, Usager
 {
@@ -13,7 +13,7 @@ public class PassagerStandard implements Passager, Usager
 
 	public PassagerStandard(String nomPassager, int numeroArret)
 	{
-		Etat e = etatPassager.EtatPassager.Etat.DEHORS;
+		Etat e = EtatPassager.Etat.DEHORS;
 		this.nom = nomPassager;
 		this.destination = numeroArret;
 		this.monEtat = new EtatPassager(e);
@@ -67,7 +67,7 @@ public class PassagerStandard implements Passager, Usager
 	   */
 	  public void accepterSortie()
 	  {
-		  this.monEtat = new EtatPassager(etatPassager.EtatPassager.Etat.DEHORS);
+		  this.monEtat = new EtatPassager(EtatPassager.Etat.DEHORS);
 	  }
 	  
 	  
@@ -80,7 +80,7 @@ public class PassagerStandard implements Passager, Usager
 	   */
 	  public void accepterPlaceAssise()
 	  {
-		  this.monEtat = new EtatPassager(etatPassager.EtatPassager.Etat.ASSIS);
+		  this.monEtat = new EtatPassager(EtatPassager.Etat.ASSIS);
 	  }
 	  
 	  
@@ -93,7 +93,7 @@ public class PassagerStandard implements Passager, Usager
 	   */
 	  public void accepterPlaceDebout()
 	  {
-		  this.monEtat = new EtatPassager(etatPassager.EtatPassager.Etat.DEBOUT);		  
+		  this.monEtat = new EtatPassager(EtatPassager.Etat.DEBOUT);		  
 		  
 	  }
 
