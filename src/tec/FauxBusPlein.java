@@ -1,36 +1,38 @@
+package tec;
+
 
 public class FauxBusPlein {
-  String message = "???";
+	String message = "???";
 
-  boolean aPlaceAssise() {
-    return false;
-  }
+	boolean aPlaceAssise() {
+		return false;
+	}
 
-  boolean aPlaceDebout() {
-    return false;
-  }
+	boolean aPlaceDebout() {
+		return false;
+	}
 
-  void demanderPlaceAssise(Passager p) {
-    message = ":demanderPlaceAssise:";
-  }
+	void demanderPlaceAssise(Passager p) {
+		message = ":demanderPlaceAssise:";
+	}
 
-  void demanderPlaceDebout(Passager p) {
-    message = ":demanderPlaceDebout:";
-  }
+	void demanderPlaceDebout(Passager p) {
+		message = ":demanderPlaceDebout:";
+	}
 
-  void demanderChangerEnDebout(Passager p) {
-    message = ":demanderChangerEnDebout:";
-  }
-  
-  void demanderChangerEnAssis(Passager p) {
-    message = ":demanderChangerEnAssis:";
-  }
+	void demanderChangerEnDebout(Passager p) {
+		message = ":demanderChangerEnDebout:";
+	}
 
-  void demanderSortie(Passager p) {
-    message = ":demanderSortie:";    
-    p.accepterSortie();
-  }
+	void demanderChangerEnAssis(Passager p) {
+		message = ":demanderChangerEnAssis:";
+	}
 
-  public void allerArretSuivant() { //throws UsagerInvalideException {
-  }
+	void demanderSortie(Passager p) {
+		message = ":demanderSortie:";    
+		p.accepterSortie();
+	}
+
+	public void allerArretSuivant() { //throws UsagerInvalideException {
+	}
 }

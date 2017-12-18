@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import JaugeTest.JaugeNaturel;
-import etatPassager.EtatPassager;
-import etatPassager.EtatPassager.Etat;
 
 public class Autobus implements Transport, Bus
 {
@@ -163,6 +161,22 @@ public class Autobus implements Transport, Bus
 		ret += "Nombres de passagers debout : " + this.nbPlacesDebout.getValeur() + "/." + this.nbPlacesDebout.getMax() + "\n";
 		ret += "Arret actuel :" + this.arretActuel;
 		return ret;
+	}
+
+	public int getArretActuel() {
+		return arretActuel;
+	}
+
+	public JaugeNaturel getNbPlacesAssises() {
+		return nbPlacesAssises;
+	}
+
+	public JaugeNaturel getNbPlacesDebout() {
+		return nbPlacesDebout;
+	}
+
+	public List<Passager> getListPassagers() {
+		return listPassagers;
 	}
 
 	

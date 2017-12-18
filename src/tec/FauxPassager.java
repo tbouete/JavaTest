@@ -1,45 +1,47 @@
+package tec;
+
 
 
 public class FauxPassager { 
-  static final byte DEHORS = 0;
-  static final byte ASSIS  = 1;
-  static final byte DEBOUT = 2;
-  byte status = DEHORS;
+	static final byte DEHORS = 0;
+	static final byte ASSIS  = 1;
+	static final byte DEBOUT = 2;
+	byte status = DEHORS;
 
-  String message ="???";
+	String message ="???";
 
-  public String nom() {
-    return null;
-  }
+	public String nom() {
+		return null;
+	}
 
-  boolean estDehors() {
-    return status == DEHORS;
-  }
-  
-  boolean estAssis() {
-    return status == ASSIS;
-  }
-  
-  boolean estDebout() {
-    return status == DEBOUT;
-  }
+	boolean estDehors() {
+		return status == DEHORS;
+	}
 
-  void accepterSortie() {
-    message = ":accepterSortie:";
-  }
+	boolean estAssis() {
+		return status == ASSIS;
+	}
 
-  void accepterPlaceAssise() {
-    message = ":accepterPlaceAssise:";
-  }
+	boolean estDebout() {
+		return status == DEBOUT;
+	}
 
-  void accepterPlaceDebout() {
-    message = ":accepterPlaceDebout:";
-  }
+	void accepterSortie() {
+		message = ":accepterSortie:";
+	}
 
-  void nouvelArret(Bus bus, int numeroArret) {
-    message = ":nouvelArret " + numeroArret + ":";
-  }
+	void accepterPlaceAssise() {
+		message = ":accepterPlaceAssise:";
+	}
 
-  public void monterDans(Transport t) { // throws UsagerInvalideException {
-  }
+	void accepterPlaceDebout() {
+		message = ":accepterPlaceDebout:";
+	}
+
+	void nouvelArret(Bus bus, int numeroArret) {
+		message = ":nouvelArret " + numeroArret + ":";
+	}
+
+	public void monterDans(Transport t) { // throws UsagerInvalideException {
+	}
 }

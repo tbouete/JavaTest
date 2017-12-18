@@ -1,38 +1,40 @@
+package tec;
+
 
 public class FauxBusAssis {
-  String message = "???";
+	String message = "???";
 
-  boolean aPlaceAssise() {
-    return true;
-  }
+	boolean aPlaceAssise() {
+		return true;
+	}
 
-  boolean aPlaceDebout() {
-    return false;
-  }
+	boolean aPlaceDebout() {
+		return false;
+	}
 
-  void demanderPlaceAssise(Passager p) {
-    message = ":demanderPlaceAssise:";
-    p.accepterPlaceAssise();
-  }
+	void demanderPlaceAssise(Passager p) {
+		message = ":demanderPlaceAssise:";
+		p.accepterPlaceAssise();
+	}
 
-  void demanderPlaceDebout(Passager p) {
-    message = ":demanderPlaceDebout:";
-  }
+	void demanderPlaceDebout(Passager p) {
+		message = ":demanderPlaceDebout:";
+	}
 
-  void demanderChangerEnDebout(Passager p) {
-    message = ":demanderChangerEnDebout:";
-  }
-  
-  void demanderChangerEnAssis(Passager p) {
-    message = ":demanderChangerEnAssis:";
-    p.accepterPlaceAssise();
-  }
+	void demanderChangerEnDebout(Passager p) {
+		message = ":demanderChangerEnDebout:";
+	}
 
-  void demanderSortie(Passager p) {
-    message = ":demanderSortie:";    
-    p.accepterSortie();
-  }
+	void demanderChangerEnAssis(Passager p) {
+		message = ":demanderChangerEnAssis:";
+		p.accepterPlaceAssise();
+	}
 
-  public void allerArretSuivant() { //throws UsagerInvalideException {
-  }
+	void demanderSortie(Passager p) {
+		message = ":demanderSortie:";    
+		p.accepterSortie();
+	}
+
+	public void allerArretSuivant() { //throws UsagerInvalideException {
+	}
 }

@@ -6,69 +6,21 @@ import org.junit.Test;
 
 public class AutobusTest {
 
+	private Autobus petitBus = new Autobus(5,10);
+	private Autobus moyenBus = new Autobus(10,15);
+	private Autobus grandBus = new Autobus(20, 30);
+	
 	@Test
-	public void testAutobus() {
-		fail("Not yet implemented");
+	public void AutobusTest(){
+		assertTrue(petitBus.getArretActuel() == 0);
+		assertTrue(petitBus.getListPassagers().size() == 0);
+		assertTrue(petitBus.getNbPlacesAssises().getMax() == 5);
+		assertTrue(petitBus.getNbPlacesDebout().getMax() == 10);
+		
+		assertTrue(moyenBus.getNbPlacesAssises().getMax() == 10);
+		assertTrue(moyenBus.getNbPlacesDebout().getMax() == 15);
+		
+		assertTrue(grandBus.getNbPlacesAssises().getMax() == 20);
+		assertTrue(grandBus.getNbPlacesDebout().getMax() == 30);
 	}
-
-	@Test
-	public void testObject() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetClass() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testHashCode() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testEquals() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testClone() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotify() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNotifyAll() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLong() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWaitLongInt() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testWait() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFinalize() {
-		fail("Not yet implemented");
-	}
-
 }
