@@ -194,6 +194,16 @@ public class PassagerStandardTest
 		{	
 			harry.monterDans(edwige);
 			System.out.println(harry.monEtat);
+			edwige.demanderPlaceAssise(harry);
+			System.out.println(harry.monEtat);
+			System.out.println(edwige.aPlaceDebout());
+			edwige.demanderPlaceDebout(harry);
+			System.out.println(harry.monEtat);
+			harry.monterDans(edwige);
+			System.out.println(harry.monEtat);
+			harry.accepterSortie();
+			harry.monterDans(edwige);
+			System.out.println(harry.monEtat);
 			assertFalse(harry.estDehors());
 		}
 
