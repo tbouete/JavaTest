@@ -79,27 +79,39 @@ public class PassagerStandardTest
 	  }
 	  
 	  
-//	  
-//	  
-//	  @Test
-//	  public void testAccepterPlaceAssise()
-//	  {
-//		  this.monEtat = new EtatPassager(etatPassager.EtatPassager.Etat.ASSIS);
-//	  }
-//	  
-//	  
-//	  
-//	  
-//	  @Test
-//	  public void testAccepterPlaceDebout()
-//	  {
-//		  this.monEtat = new EtatPassager(etatPassager.EtatPassager.Etat.DEBOUT);		  
-//		  
-//	  }
-//
-//	
-//	
-//	
+	  
+	  
+	  @Test
+	  public void testAccepterPlaceAssise()
+	  {
+		  Kaylee.accepterSortie();
+		  Jayne.accepterPlaceAssise();
+		  Inara.accepterPlaceDebout();
+		  
+		  assertFalse(Kaylee.estAssis());
+		  assertTrue(Jayne.estAssis());
+		  assertFalse(Inara.estAssis());
+	  }
+	  
+	  
+	  
+	  
+	  @Test
+	  public void testAccepterPlaceDebout()
+	  {
+		  Kaylee.accepterSortie();
+		  Jayne.accepterPlaceAssise();
+		  Inara.accepterPlaceDebout();
+		  
+		  assertFalse(Kaylee.estDebout());
+		  assertFalse(Jayne.estDebout());
+		  assertTrue(Inara.estDebout());	  
+		  
+	  }
+
+	
+	
+	
 //	@Test
 //	  public void testNouvelArret(Bus bus, int numeroArret)
 //	  {
@@ -108,7 +120,7 @@ public class PassagerStandardTest
 //			  ((Autobus)bus).demanderSortie(this);
 //		  }		  
 //	  }
-//
+
 //	  
 //	  
 //	  
