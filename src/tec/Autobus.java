@@ -66,6 +66,7 @@ public class Autobus implements Transport, Bus
 			  if(this.aPlaceAssise()){
 				  pS.accepterPlaceAssise();
 				  this.nbPlacesAssises.incrementer();
+				  this.listPassagers.add(pS);
 			  }
 		  }
 	  }
@@ -90,6 +91,7 @@ public class Autobus implements Transport, Bus
 			  if(this.aPlaceDebout()){
 				  pS.accepterPlaceDebout();
 				  this.nbPlacesDebout.incrementer();
+				  this.listPassagers.add(pS);
 			  }
 		  }
 	  }
@@ -148,6 +150,7 @@ public class Autobus implements Transport, Bus
 	   */
 	  public void demanderSortie(Passager p)
 	  {
+		  if(this.listPassagers.contains(p)) this.listPassagers.remove(p);
 		  if (p instanceof PassagerStandard) {
 			PassagerStandard pS = (PassagerStandard) p;
 			if(pS.monEtat.estDebout()){ this.nbPlacesDebout.decrementer(); }
