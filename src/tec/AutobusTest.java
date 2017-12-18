@@ -8,7 +8,6 @@ public class AutobusTest {
 
 	private Autobus petitBus = new Autobus(5,10);
 	private Autobus moyenBus = new Autobus(10,15);
-	private Autobus grandBus = new Autobus(20, 30);
 
 	@Test
 	public void AutobusTest(){
@@ -19,9 +18,6 @@ public class AutobusTest {
 
 		assertTrue(moyenBus.getNbPlacesAssises().getMax() == 10);
 		assertTrue(moyenBus.getNbPlacesDebout().getMax() == 15);
-
-		assertTrue(grandBus.getNbPlacesAssises().getMax() == 20);
-		assertTrue(grandBus.getNbPlacesDebout().getMax() == 30);
 	}
 
 	@Test
