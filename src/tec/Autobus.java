@@ -156,5 +156,17 @@ public class Autobus implements Transport, Bus
 		  }
 	  }
 
+	@Override
+	public String toString() {
+		String ret = "";
+		ret += "Nombres de passagers assis : " + this.nbPlacesAssises.getValeur() + "/." + this.nbPlacesAssises.getMax() + "\n";
+		ret += "Nombres de passagers debout : " + this.nbPlacesDebout.getValeur() + "/." + this.nbPlacesDebout.getMax() + "\n";
+		ret += "Arret actuel :" + this.arretActuel;
+		return ret;
+	}
+
+	
+	  
+
 	  
 }
