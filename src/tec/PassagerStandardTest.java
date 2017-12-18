@@ -14,38 +14,45 @@ public class PassagerStandardTest
 	PassagerStandard Inara = new PassagerStandard("Inara", 5);
 	
 	
+	
+	
 	  @Test
 	  public void testNom()
 	  {
-		  assertTrue("Kaylee"==Kaylee.nom());
 		  assertEquals("Kaylee",Kaylee.nom());
+		  assertFalse("Jayne".equals(Kaylee.nom()));
 	  }
 	  
 	  
-//	  
-//	  @Test
-//	  public boolean testEstDehors()
-//	  {
-//		 return this.monEtat.estExterieur();
-//	  }	  
-//	  
-//	
-//	  
-//	  @Test
-//	  public boolean testEstAssis()
-//	  {
-//		  return this.monEtat.estAssis();
-//	  }
-//	    
-//	  
-//	  
-//	  @Test
-//	  public boolean testEstDebout()
-//	  { 
-//		  return this.monEtat.estDebout();
-//		  
-//	  }
-//	  
+	  
+	  @Test
+	  public void testEstDehors()
+	  {
+		 Jayne.accepterPlaceAssise();
+		 assertTrue(Kaylee.estDehors());
+		 assertFalse(Jayne.estDehors());
+	  }	  
+	  
+	
+	  
+	  @Test
+	  public void testEstAssis()
+	  {
+		  Jayne.accepterPlaceAssise();
+		  assertFalse(Kaylee.estAssis());
+		  assertTrue(Jayne.estAssis());
+	  }
+	    
+	  
+	  
+	  @Test
+	  public void testEstDebout()
+	  {
+		  Jayne.accepterPlaceAssise();
+		  assertFalse(Kaylee.estAssis());
+		  assertTrue(Jayne.estAssis());
+	  }
+	  
 //	  
 //	  
 //	  @Test
