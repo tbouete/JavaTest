@@ -35,6 +35,8 @@ public class Autobus implements Transport, Bus
 	}
 	
 	
+	
+	
 	  /**
 	   * vrai s'il existe des places assises.
 	   * @return vrai s'il existe des places assises
