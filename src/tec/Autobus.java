@@ -148,7 +148,7 @@ public class Autobus implements Transport, Bus
 	  {
 		  if (p instanceof PassagerStandard) {
 			PassagerStandard pS = (PassagerStandard) p;
-			if(pS.estDebout()){ this.nbPlacesDebout.decrementer(); }
+			if(pS.monEtat.estDebout()){ this.nbPlacesDebout.decrementer(); }
 			if(pS.monEtat.estAssis()){ this.nbPlacesAssises.decrementer(); }
 		  	pS.accepterSortie();
 		  }
