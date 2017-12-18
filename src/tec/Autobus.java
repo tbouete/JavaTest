@@ -64,7 +64,7 @@ public class Autobus implements Transport, Bus
 		  if (p instanceof PassagerStandard) {
 			  PassagerStandard pS = (PassagerStandard) p;
 			  if(this.aPlaceAssise()){
-				  pS.monEtat = new EtatPassager(Etat.ASSIS);
+				  pS.accepterPlaceAssise();
 				  this.nbPlacesAssises.incrementer();
 			  }
 		  }
@@ -88,7 +88,7 @@ public class Autobus implements Transport, Bus
 		  if (p instanceof PassagerStandard) {
 			  PassagerStandard pS = (PassagerStandard) p;
 			  if(this.aPlaceDebout()){
-				  pS.monEtat = new EtatPassager(Etat.DEBOUT);
+				  pS.accepterPlaceDebout();
 				  this.nbPlacesDebout.incrementer();
 			  }
 		  }
@@ -109,7 +109,7 @@ public class Autobus implements Transport, Bus
 		  if (p instanceof PassagerStandard) {
 				PassagerStandard pS = (PassagerStandard) p;
 				if(this.aPlaceDebout()){
-					pS.monEtat = new EtatPassager(Etat.DEBOUT);
+					pS.accepterPlaceDebout();
 					this.nbPlacesAssises.decrementer();
 					this.nbPlacesDebout.incrementer();
 				}
@@ -131,7 +131,7 @@ public class Autobus implements Transport, Bus
 		  if (p instanceof PassagerStandard) {
 				PassagerStandard pS = (PassagerStandard) p;
 				if(this.aPlaceAssise()){
-					pS.monEtat = new EtatPassager(Etat.DEBOUT);
+					pS.accepterPlaceAssise();
 					this.nbPlacesAssises.incrementer();
 					this.nbPlacesDebout.decrementer();
 		  }
@@ -152,7 +152,7 @@ public class Autobus implements Transport, Bus
 			PassagerStandard pS = (PassagerStandard) p;
 			if(pS.monEtat.estDebout()){ this.nbPlacesDebout.decrementer(); }
 			if(pS.monEtat.estAssis()){ this.nbPlacesAssises.decrementer(); }
-		  	pS.monEtat = new EtatPassager(Etat.DEHORS);
+		  	pS.accepterSortie();
 		  }
 	  }
 
