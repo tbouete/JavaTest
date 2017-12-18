@@ -4,56 +4,105 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class PassagerStandardTest {
+import etatPassager.EtatPassager;
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+public class PassagerStandardTest 
+{
+	
+	PassagerStandard Kaylee = new PassagerStandard("Kaylee", 5);
+	PassagerStandard Jayne = new PassagerStandard("Jayne", 4);
+	PassagerStandard Inara = new PassagerStandard("Inara", 5);
 	
 	
-	  /**
-	   * Test m�thode Nouvel Arret qui doit indique au passager s'il est arrivé à un nouvel arrêt. Cette methode
-	   * fixe le comportement (changer de place ou sortir). 
-	   * Cette méthode est appelée par Bus.
-	   *
-	   * @param bus le bus dans lequel se trouve le passager.
-	   * @param numeroArret numero de l'arrêt.
-	   */
-	
-	@Test
-	  public void testNouvelArret(Bus bus, int numeroArret)
+	  @Test
+	  public void testNom()
 	  {
-		  if (numeroArret == this.destination)
-		  {
-			  ((Autobus)bus).demanderSortie(this);
-		  }		  
+		  assertTrue("Kaylee"==Kaylee.nom());
+		  assertEquals("Kaylee",Kaylee.nom());
 	  }
-
 	  
 	  
-	  
-	  /**
-	   * Fournit à l'usager le transport auquel il peut accéder.
-	   * Cette méthode réalise le caractère du passager à la montée.
-	   * 
-	   * @param t le transport dans lequel désire monter l'usager.
-	   * @throws si l'état de l'usager est incohérent par rapport à sa demande.
-	   */
-		@Test
-	  public void monterDans(Transport t) throws UsagerInvalideException
-	  {
-		  if (t instanceof Autobus)
-		  {
-			  ((Autobus)t).demanderPlaceDebout(this);
-			  if (this.estDehors())
-			  {
-				  ((Autobus)t).demanderPlaceAssise(this);
-			  }
-			  else if(this.estDehors())
-			 {
-				  throw new UsagerInvalideException ("Il n'y a plus de place disponible.");
-			 }
-		  }
+//	  
+//	  @Test
+//	  public boolean testEstDehors()
+//	  {
+//		 return this.monEtat.estExterieur();
+//	  }	  
+//	  
+//	
+//	  
+//	  @Test
+//	  public boolean testEstAssis()
+//	  {
+//		  return this.monEtat.estAssis();
+//	  }
+//	    
+//	  
+//	  
+//	  @Test
+//	  public boolean testEstDebout()
+//	  { 
+//		  return this.monEtat.estDebout();
+//		  
+//	  }
+//	  
+//	  
+//	  
+//	  @Test
+//	  public void testAccepterSortie()
+//	  {
+//		  this.monEtat = new EtatPassager(etatPassager.EtatPassager.Etat.DEHORS);
+//	  }
+//	  
+//	  
+//	  
+//	  
+//	  @Test
+//	  public void testAccepterPlaceAssise()
+//	  {
+//		  this.monEtat = new EtatPassager(etatPassager.EtatPassager.Etat.ASSIS);
+//	  }
+//	  
+//	  
+//	  
+//	  
+//	  @Test
+//	  public void testAccepterPlaceDebout()
+//	  {
+//		  this.monEtat = new EtatPassager(etatPassager.EtatPassager.Etat.DEBOUT);		  
+//		  
+//	  }
+//
+//	
+//	
+//	
+//	@Test
+//	  public void testNouvelArret(Bus bus, int numeroArret)
+//	  {
+//		  if (numeroArret == this.destination)
+//		  {
+//			  ((Autobus)bus).demanderSortie(this);
+//		  }		  
+//	  }
+//
+//	  
+//	  
+//	  
+//
+//		@Test
+//	  public void testMonterDans(Transport t) throws UsagerInvalideException
+//	  {
+//		  if (t instanceof Autobus)
+//		  {
+//			  ((Autobus)t).demanderPlaceDebout(this);
+//			  if (this.estDehors())
+//			  {
+//				  ((Autobus)t).demanderPlaceAssise(this);
+//			  }
+//			  else if(this.estDehors())
+//			 {
+//				  throw new UsagerInvalideException ("Il n'y a plus de place disponible.");
+//			 }
+//		  }
 
 }
