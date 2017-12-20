@@ -9,16 +9,16 @@ public abstract class PassagerAbstrait implements Passager, Usager
 	private String nom;
 	private int destination;
 	private EtatPassager monEtat;
-	private int typePassager;
+//	private int typePassager;
 
 
-	public PassagerAbstrait(String nomPassager, int numeroArret, int typePass)
+	public PassagerAbstrait(String nomPassager, int numeroArret)
 	{
 		Etat e = EtatPassager.Etat.DEHORS;
 		this.nom = nomPassager;
 		this.destination = numeroArret;
 		this.monEtat = new EtatPassager(e);		
-		this.typePassager = typePass;
+//		this.typePassager = typePass;
 	}
 
 	
@@ -31,12 +31,12 @@ public abstract class PassagerAbstrait implements Passager, Usager
 	public EtatPassager getMonEtat() {return monEtat;}
 	public void setMonEtat(EtatPassager monEtat) {this.monEtat = monEtat;}
 
-	public int getTypePassager() {return typePassager;}
-	public void setTypePassager(int typePassager) {this.typePassager = typePassager;}
+//	public int getTypePassager() {return typePassager;}
+//	public void setTypePassager(int typePassager) {this.typePassager = typePassager;}
 
 
 
-	public String nom()
+	public final String nom()
 	{
 		return this.nom;
 	}
@@ -47,7 +47,7 @@ public abstract class PassagerAbstrait implements Passager, Usager
 	 * Retourne vrai si le passager est hors du bus.
 	 * @return vrai si le passager est hors du bus.
 	 */
-	public boolean estDehors()
+	public final boolean estDehors()
 	{
 		return this.monEtat.estExterieur();
 	}	  
@@ -58,7 +58,7 @@ public abstract class PassagerAbstrait implements Passager, Usager
 	 * Retourne vrai si le passager est assis dans le bus.
 	 * @return vrai si le passager est assis dans le bus.
 	 */
-	public boolean estAssis()
+	public final boolean estAssis()
 	{
 		return this.monEtat.estAssis();
 	}
@@ -69,7 +69,7 @@ public abstract class PassagerAbstrait implements Passager, Usager
 	 * Retourne vrai si le passager est debout dans le bus.
 	 * @return vrai si le passager est debout dans le bus.
 	 */
-	public boolean estDebout()
+	public final boolean estDebout()
 	{ 
 		return this.monEtat.estDebout();
 
@@ -81,7 +81,7 @@ public abstract class PassagerAbstrait implements Passager, Usager
 	 * Change l'�tat du passager en hors du bus.
 	 * Cette m�thode est appel�e par un objet Bus.
 	 */
-	public void accepterSortie()
+	public final void accepterSortie()
 	{
 		this.monEtat = new EtatPassager(EtatPassager.Etat.DEHORS);
 	}
@@ -94,7 +94,7 @@ public abstract class PassagerAbstrait implements Passager, Usager
 	 * Le passager est dans le bus.
 	 * Cette méthode est appelée par un objet Bus.
 	 */
-	public void accepterPlaceAssise()
+	public final void accepterPlaceAssise()
 	{
 		this.monEtat = new EtatPassager(EtatPassager.Etat.ASSIS);
 	}
@@ -107,7 +107,7 @@ public abstract class PassagerAbstrait implements Passager, Usager
 	 * Le passager est dans le bus.
 	 * Cette méthode est appelée par un objet Bus.
 	 */
-	public void accepterPlaceDebout()
+	public final void accepterPlaceDebout()
 	{
 		this.monEtat = new EtatPassager(EtatPassager.Etat.DEBOUT);		  
 
@@ -123,12 +123,18 @@ public abstract class PassagerAbstrait implements Passager, Usager
 	 * @param bus le bus dans lequel se trouve le passager.
 	 * @param numeroArret numero de l'arrêt.
 	 * 
-	 * A REDEFINIR
 	 */
-	public abstract void nouvelArret(Bus bus, int numeroArret);
-
-
-
+	public final void nouvelArret(Bus bus, int numeroArret)
+	{
+		if (numeroArret == this.getDestination());
+		{
+			((Autobus)bus).demanderSortie(this);
+		}
+		choixChangerPlace(((Autobus)bus),numeroArret);
+	}
+	
+	
+	
 
 	/**
 	 * Fournit à l'usager le transport auquel il peut accéder.
@@ -137,12 +143,27 @@ public abstract class PassagerAbstrait implements Passager, Usager
 	 * @param t le transport dans lequel désire monter l'usager.
 	 * @throws si l'état de l'usager est incohérent par rapport à sa demande.
 	 *
-	 *A REDEFINIR
-	 *
 	 */
 
-	public abstract void monterDans(Transport t) throws UsagerInvalideException;
+	public final void monterDans(Transport t) throws UsagerInvalideException
+	{
+		if (t instanceof Autobus)
+		{
+			
+			choixPlaceMontee(((Autobus)t));
+			if(this.estDehors())
+			{
+				throw new UsagerInvalideException ("Il n'y a plus de place disponible.");
+			}
+		}				
+	}
 
 
+	public abstract void choixPlaceMontee(Transport t);
+	
+	public abstract void choixChangerPlace(Bus b, int arret);
+	
+	
+	
 
 }

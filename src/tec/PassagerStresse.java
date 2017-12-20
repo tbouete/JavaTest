@@ -1,10 +1,9 @@
 package tec;
 
-
-public final class PassagerStandard extends PassagerAbstrait
+public final class PassagerStresse extends PassagerAbstrait
 {	
 
-	public PassagerStandard(String nomPassager, int numeroArret)
+	public PassagerStresse(String nomPassager, int numeroArret)
 	{
 		super(nomPassager,numeroArret); 
 
@@ -20,19 +19,19 @@ public final class PassagerStandard extends PassagerAbstrait
 			{
 				((Autobus)t).demanderPlaceAssise(this);
 			}
-			else if (  ((Autobus)t).aPlaceDebout()  )
-			{
-				((Autobus)t).demanderPlaceDebout(this) ;
-			}
 		}
 	}
+	
 	
 	
 	public void choixChangerPlace(Bus bus, int numeroArret)
 	{
 		if (bus instanceof Autobus)
 		{
-			
+			if (numeroArret == this.getDestination()-3 );
+			{
+				if (((Autobus)bus).aPlaceDebout()) ((Autobus)bus).demanderPlaceDebout(this);
+			}
 		}
 	}
 		
