@@ -22,6 +22,8 @@ interface Bus
 
 	
 	
+	
+	
   /**
    * vrai s'il existe des places assises.
    * @return vrai s'il existe des places assises
