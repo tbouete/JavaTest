@@ -1,103 +1,18 @@
 package tec;
 
-import tec.EtatPassager;
+
 import tec.EtatPassager.Etat;
 
-public class PassagerStandard implements Passager, Usager
-{
-	
-	public String nom;
-	public int destination;
-	public EtatPassager monEtat;
-	
+public class PassagerStandard extends PassagerAbstrait
+{	
 
-	public PassagerStandard(String nomPassager, int numeroArret)
+	public PassagerStandard(String nomPassager, int numeroArret, int typePass)
 	{
-		Etat e = EtatPassager.Etat.DEHORS;
-		this.nom = nomPassager;
-		this.destination = numeroArret;
-		this.monEtat = new EtatPassager(e);
+		super(nomPassager,numeroArret,typePass); 
+		
 	}
 		  
-	  
-	  public String nom()
-	  {
-		  return this.nom;
-	  }
-	  
-	  
-	  
-	  /**
-	   * Retourne vrai si le passager est hors du bus.
-	   * @return vrai si le passager est hors du bus.
-	   */
-	  public boolean estDehors()
-	  {
-		 return this.monEtat.estExterieur();
-	  }	  
-	  
 	
-	  
-	  /**
-	   * Retourne vrai si le passager est assis dans le bus.
-	   * @return vrai si le passager est assis dans le bus.
-	   */
-	  public boolean estAssis()
-	  {
-		  return this.monEtat.estAssis();
-	  }
-	    
-	  
-	  
-	  /**
-	   * Retourne vrai si le passager est debout dans le bus.
-	   * @return vrai si le passager est debout dans le bus.
-	   */
-	  public boolean estDebout()
-	  { 
-		  return this.monEtat.estDebout();
-		  
-	  }
-	  
-	  
-	  
-	  /**
-	   * Change l'�tat du passager en hors du bus.
-	   * Cette m�thode est appel�e par un objet Bus.
-	   */
-	  public void accepterSortie()
-	  {
-		  this.monEtat = new EtatPassager(EtatPassager.Etat.DEHORS);
-	  }
-	  
-	  
-	  
-	  
-	  /**
-	   * Change l'état du passager en assis. 
-	   * Le passager est dans le bus.
-	   * Cette méthode est appelée par un objet Bus.
-	   */
-	  public void accepterPlaceAssise()
-	  {
-		  this.monEtat = new EtatPassager(EtatPassager.Etat.ASSIS);
-	  }
-	  
-	  
-	  
-	  
-	  /**
-	   * Change l'état du passager en debout.
-	   * Le passager est dans le bus.
-	   * Cette méthode est appelée par un objet Bus.
-	   */
-	  public void accepterPlaceDebout()
-	  {
-		  this.monEtat = new EtatPassager(EtatPassager.Etat.DEBOUT);		  
-		  
-	  }
-
-	  
 	  
 	  /**
 	   * Indique au passager qu'il est arrivé à un nouvel arrêt. Cette methode
@@ -107,9 +22,12 @@ public class PassagerStandard implements Passager, Usager
 	   * @param bus le bus dans lequel se trouve le passager.
 	   * @param numeroArret numero de l'arrêt.
 	   */
+	
+	
+	
 	  public void nouvelArret(Bus bus, int numeroArret)
 	  {
-		  if (numeroArret == this.destination)
+		  if (numeroArret == this.getDestination());
 		  {
 			  ((Autobus)bus).demanderSortie(this);
 		  }		  
