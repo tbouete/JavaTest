@@ -6,139 +6,50 @@ import org.junit.Test;
 
 import etatPassager.EtatPassager;
 
-public class PassagerStandardTest 
+public abstract class PassagerStandardTest extends PassagerAbstraitTest
 {
-
-	PassagerStandard Kaylee = new PassagerStandard("Kaylee", 5);
-	PassagerStandard Jayne = new PassagerStandard("Jayne", 4);
-	PassagerStandard Inara = new PassagerStandard("Inara", 5);
-
-
-
-
-	@Test
-	public void testNom()
+	
+	PassagerAbstrait Kaylee = creerPassager("Kaylee", 5);
+	PassagerAbstrait Jayne = creerPassager("Jayne", 4);
+	PassagerAbstrait Inara = creerPassager("Inara", 5);
+	
+	protected PassagerAbstrait creerPassager(String nom, int destination)
 	{
-		assertEquals("Kaylee",Kaylee.nom());
-		assertFalse("Jayne".equals(Kaylee.nom()));
+		PassagerAbstrait pS = new PassagerStandard(nom,destination); 
+		return pS;
 	}
 
 
-
 	@Test
-	public void testEstDehors()
+	public PassagerStandard(String nomPassager, int numeroArret)
 	{
-		Jayne.accepterPlaceAssise();
-		Inara.accepterPlaceDebout();
-
-		assertTrue(Kaylee.estDehors());
-		assertFalse(Jayne.estDehors());
-		assertFalse(Inara.estDehors());
-	}	  
-
-
-
-	@Test
-	public void testEstAssis()
-	{
-		Jayne.accepterPlaceAssise();
-		Inara.accepterPlaceDebout();
-
-		assertFalse(Kaylee.estAssis());
-		assertTrue(Jayne.estAssis());
-		assertFalse(Inara.estAssis());
+		super(nomPassager,numeroArret); 
 
 	}
 
-
-
 	@Test
-	public void testEstDebout()
+	public void choixPlaceMontee(Transport t)
 	{
-		Jayne.accepterPlaceAssise();
-		Inara.accepterPlaceDebout();
-
-		assertFalse(Kaylee.estDebout());
-		assertFalse(Jayne.estDebout());
-		assertTrue(Inara.estDebout());
+		if (t instanceof Autobus)
+		{
+			if (  ((Autobus)t).aPlaceAssise()  )
+			{
+				((Autobus)t).demanderPlaceAssise(this);
+			}
+			else if (  ((Autobus)t).aPlaceDebout()  )
+			{
+				((Autobus)t).demanderPlaceDebout(this) ;
+			}
+		}
 	}
-
-
-
+	
 	@Test
-	public void testAccepterSortie()
+	public void choixChangerPlace(Bus bus, int numeroArret)
 	{
-		Kaylee.accepterPlaceAssise();
-		Jayne.accepterSortie();
-		Inara.accepterPlaceDebout();
-
-		assertFalse(Kaylee.estDehors());
-		assertTrue(Jayne.estDehors());
-		assertFalse(Inara.estDehors());
-
+		if (bus instanceof Autobus)
+		{
+			
+		}
 	}
-
-
-
-
-	@Test
-	public void testAccepterPlaceAssise()
-	{
-		Kaylee.accepterSortie();
-		Jayne.accepterPlaceAssise();
-		Inara.accepterPlaceDebout();
-
-		assertFalse(Kaylee.estAssis());
-		assertTrue(Jayne.estAssis());
-		assertFalse(Inara.estAssis());
-	}
-
-
-
-
-	@Test
-	public void testAccepterPlaceDebout()
-	{
-		Kaylee.accepterSortie();
-		Jayne.accepterPlaceAssise();
-		Inara.accepterPlaceDebout();
-
-		assertFalse(Kaylee.estDebout());
-		assertFalse(Jayne.estDebout());
-		assertTrue(Inara.estDebout());	  
-
-	}
-
-
-
-
-	//	@Test
-	//	  public void testNouvelArret(Bus bus, int numeroArret)
-	//	  {
-	//		  if (numeroArret == this.destination)
-	//		  {
-	//			  ((Autobus)bus).demanderSortie(this);
-	//		  }		  
-	//	  }
-
-	//	  
-	//	  
-	//	  
-	//
-	//		@Test
-	//	  public void testMonterDans(Transport t) throws UsagerInvalideException
-	//	  {
-	//		  if (t instanceof Autobus)
-	//		  {
-	//			  ((Autobus)t).demanderPlaceDebout(this);
-	//			  if (this.estDehors())
-	//			  {
-	//				  ((Autobus)t).demanderPlaceAssise(this);
-	//			  }
-	//			  else if(this.estDehors())
-	//			 {
-	//				  throw new UsagerInvalideException ("Il n'y a plus de place disponible.");
-	//			 }
-	//		  }
 
 }

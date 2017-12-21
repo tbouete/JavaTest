@@ -13,13 +13,16 @@ public class Autobus implements Transport, Bus
 	private JaugeNaturel nbPlacesDebout;
 	private List<Passager> listPassagers;
 	
-	public Autobus(int nbPlacesAssisesMax, int nbPlacesDeboutsMax){
+	
+	public Autobus(int nbPlacesAssisesMax, int nbPlacesDeboutsMax)
+	{
 		this.listPassagers = new ArrayList<>();
 		this.nbPlacesAssises = new JaugeNaturel(0, nbPlacesAssisesMax, 0);
 		this.nbPlacesDebout = new JaugeNaturel(0, nbPlacesDeboutsMax, 0);
 	}
 	
-	public Autobus() {
+	public Autobus() 
+	{
 		this(0, 0);
 	}
 	
@@ -28,7 +31,12 @@ public class Autobus implements Transport, Bus
 	{
 		if(arretActuel + 1 == this.ARRET_FINAl) throw new UsagerInvalideException("Cet autobus est déjà au terminus");
 		this.arretActuel++;
-		for(Passager p : this.listPassagers) p.nouvelArret(this, this.arretActuel);
+		
+		for (int i = 0 ; i < listPassagers.size() ; i++)
+		{
+			listPassagers.get(i).nouvelArret(this, this.arretActuel);
+		}
+		
 	}
 	
 	
@@ -61,9 +69,11 @@ public class Autobus implements Transport, Bus
 	  
 	  public void demanderPlaceAssise(Passager p)
 	  {
-		  if (p instanceof PassagerStandard) {
+		  if (p instanceof PassagerStandard)
+		  {
 			  PassagerStandard pS = (PassagerStandard) p;
-			  if(this.aPlaceAssise()){
+			  if(this.aPlaceAssise())
+			  {
 				  pS.accepterPlaceAssise();
 				  this.nbPlacesAssises.incrementer();
 			  }

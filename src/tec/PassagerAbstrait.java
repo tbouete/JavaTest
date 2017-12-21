@@ -9,7 +9,6 @@ public abstract class PassagerAbstrait implements Passager, Usager
 	private String nom;
 	private int destination;
 	private EtatPassager monEtat;
-//	private int typePassager;
 
 
 	public PassagerAbstrait(String nomPassager, int numeroArret)
@@ -18,7 +17,6 @@ public abstract class PassagerAbstrait implements Passager, Usager
 		this.nom = nomPassager;
 		this.destination = numeroArret;
 		this.monEtat = new EtatPassager(e);		
-//		this.typePassager = typePass;
 	}
 
 	
@@ -75,7 +73,23 @@ public abstract class PassagerAbstrait implements Passager, Usager
 
 	}
 
+	/**
+	 * Retourne vrai si le passager est debout ou assis dans le bus.
+	 * @return vrai si le passager est debout ou assis dans le bus.
+	 */
+	public final boolean estInterieur()
+	{ 
+		if(this.monEtat.estDebout())
+		{
+			return true;
+		}
+		else if(this.monEtat.estAssis())
+		{
+			return true;
+		}
+		return false;
 
+	}
 
 	/**
 	 * Change l'état du passager en hors du bus.
@@ -126,11 +140,15 @@ public abstract class PassagerAbstrait implements Passager, Usager
 	 */
 	public final void nouvelArret(Bus bus, int numeroArret)
 	{
-		if (numeroArret == this.getDestination());
+		if (bus instanceof Autobus)
 		{
-			((Autobus)bus).demanderSortie(this);
+			if (numeroArret == this.getDestination());
+			{
+				((Autobus)bus).demanderSortie(this);
+			}
+			choixChangerPlace(((Autobus)bus),numeroArret);
 		}
-		choixChangerPlace(((Autobus)bus),numeroArret);
+		
 	}
 	
 	
