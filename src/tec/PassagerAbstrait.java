@@ -29,9 +29,6 @@ public abstract class PassagerAbstrait implements Passager, Usager
 	public EtatPassager getMonEtat() {return monEtat;}
 	public void setMonEtat(EtatPassager monEtat) {this.monEtat = monEtat;}
 
-//	public int getTypePassager() {return typePassager;}
-//	public void setTypePassager(int typePassager) {this.typePassager = typePassager;}
-
 
 
 	public final String nom()

@@ -6,46 +6,82 @@ import org.junit.Test;
 
 public class PassagerStresseTest
 {
-	
+	PassagerAbstrait Chris = creerPassager("Chris", 5);
+	PassagerAbstrait Bobbi = creerPassager("Bobbi", 4);
+
+
+
 	protected PassagerAbstrait creerPassager(String nom, int destination)
 	{
 		PassagerAbstrait pS = new PassagerStresse(nom,destination); 
 		return pS;
 	}
-	
-	
+
+
+
+
+
+	public void testChoixPlaceMontee()
+	{
+		Autobus Zarbibus = new Autobus(15,15);
+
+		try
+		{
+			Bobbi.monterDans(Zarbibus);
+
+			assertFalse(Bobbi.estDebout());
+			assertTrue(Bobbi.estAssis());
+			assertFalse(Bobbi.estDehors());
+
+		}
+		catch (UsagerInvalideException e)
+		{
+			e.printStackTrace();
+			fail();
+		}
+
+	}
+
 
 	@Test
-	public testPassagerStresse(String nomPassager, int numeroArret)
+	public void testChoixChangerPlace()
 	{
-		super(nomPassager,numeroArret); 
+		Autobus Busbizarre = new Autobus(15,15);
 
-	}
-
-
-
-	public void testChoixPlaceMontee(Transport t)
-	{
-		if (t instanceof Autobus)
+		try
 		{
-			if (  ((Autobus)t).aPlaceAssise()  )
+			Chris.monterDans(Busbizarre);
+			assertTrue(Chris.estAssis());
+			assertFalse(Chris.estDebout());
+			assertFalse(Chris.estDehors());
+
+
+			for(int i=0 ; i<4 ; i++)
 			{
-				((Autobus)t).demanderPlaceAssise(this);
+				try
+				{
+					Busbizarre.allerArretSuivant();
+				}
+				catch (UsagerInvalideException e)
+				{
+					e.printStackTrace();
+					fail();
+				}
 			}
+
+			assertFalse(Chris.estAssis());
+			assertTrue(Chris.estDebout());
+			assertFalse(Chris.estDehors());
+
+
 		}
-	}
-	
-	
-	@Test
-	public void testChoixChangerPlace(Bus bus, int numeroArret)
-	{
-		if (bus instanceof Autobus)
+		catch (UsagerInvalideException e)
 		{
-			if (numeroArret == this.getDestination()-3 );
-			{
-				if (((Autobus)bus).aPlaceDebout()) ((Autobus)bus).demanderPlaceDebout(this);
-			}
+			e.printStackTrace();
+			fail();
 		}
+
+
 	}
-		
+
 }

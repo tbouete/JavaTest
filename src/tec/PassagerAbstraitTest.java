@@ -6,15 +6,13 @@ import org.junit.Test;
 
 public abstract class PassagerAbstraitTest
 {
-	abstract protected PassagerAbstrait creerPassager(String nom, int destination);
-
-
+	
 	PassagerAbstrait Kaylee = creerPassager("Kaylee", 5);
 	PassagerAbstrait Jayne = creerPassager("Jayne", 4);
 	PassagerAbstrait Inara = creerPassager("Inara", 3);
-
-
-
+	
+	
+	abstract protected PassagerAbstrait creerPassager(String nom, int destination);
 
 	@Test
 	public void testNom()
@@ -131,11 +129,6 @@ public abstract class PassagerAbstraitTest
 		Jayne.accepterPlaceAssise();
 		Inara.accepterPlaceDebout();
 
-//		
-//		PassagerAbstrait Kaylee = creerPassager("Kaylee", 5);
-//		PassagerAbstrait Jayne = creerPassager("Jayne", 4);
-//		PassagerAbstrait Inara = creerPassager("Inara", 5);
-
 		Autobus bubus1 = new Autobus(10,10);
 		
 		for(int i=0 ; i<4 ; i++)
@@ -159,35 +152,20 @@ public abstract class PassagerAbstraitTest
 	
 	
 	@Test
-	public void testMonterDans(Transport t) throws UsagerInvalideException
+	public void testMonterDans() throws UsagerInvalideException
 	{
+		Autobus chatBus = new Autobus(10,10);
+		Kaylee.monterDans(chatBus);
+
+		chatBus.demanderPlaceAssise(Kaylee);
+		chatBus.demanderPlaceAssise(Jayne);
 		
-
-		Kaylee.accepterPlaceAssise();
-		Jayne.accepterPlaceAssise();
-		Inara.accepterPlaceDebout();
-
-//		
-//		PassagerAbstrait Kaylee = creerPassager("Kaylee", 5);
-//		PassagerAbstrait Jayne = creerPassager("Jayne", 4);
-//		PassagerAbstrait Inara = creerPassager("Inara", 5);
-
+		assertTrue(Kaylee.estInterieur());
+		assertTrue( ! (Jayne.estDehors()) );
+		
 	}
-		if (t instanceof Autobus)
-		{
-			((Autobus)t).demanderPlaceDebout(this);
-			if (this.estDehors())
-			{
-				((Autobus)t).demanderPlaceAssise(this);
-			}
-			else if(this.estDehors())
-			{
-				throw new UsagerInvalideException ("Il n'y a plus de place disponible.");
-			}
-		}
 
+	public abstract void testChoixPlaceMontee();
 
-	public abstract void testChoixPlaceMontee(Transport t);
-
-	public abstract void testChoixChangerPlace(Bus b, int arret);
+	public abstract void testChoixChangerPlace();
 }

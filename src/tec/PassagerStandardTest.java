@@ -21,35 +21,25 @@ public abstract class PassagerStandardTest extends PassagerAbstraitTest
 
 
 	@Test
-	public PassagerStandard(String nomPassager, int numeroArret)
-	{
-		super(nomPassager,numeroArret); 
-
-	}
-
-	@Test
 	public void choixPlaceMontee(Transport t)
 	{
-		if (t instanceof Autobus)
-		{
-			if (  ((Autobus)t).aPlaceAssise()  )
-			{
-				((Autobus)t).demanderPlaceAssise(this);
-			}
-			else if (  ((Autobus)t).aPlaceDebout()  )
-			{
-				((Autobus)t).demanderPlaceDebout(this) ;
-			}
-		}
+		Autobus weshCestLeBus = new Autobus(10,10);
+		
+		weshCestLeBus.demanderPlaceAssise(Kaylee);
+		weshCestLeBus.demanderPlaceDebout(Inara);
+		
+		assertTrue(Kaylee.estAssis());
+		assertFalse(Inara.estDehors());
+		assertFalse(Kaylee.estDebout());
+		assertTrue(Inara.estDebout());
+		
+		
 	}
 	
 	@Test
-	public void choixChangerPlace(Bus bus, int numeroArret)
+	public void choixChangerPlace()
 	{
-		if (bus instanceof Autobus)
-		{
-			
-		}
+		
 	}
 
 }

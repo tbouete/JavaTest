@@ -6,6 +6,8 @@ import org.junit.Test;
 
 public class PassagerLunatiqueTest extends PassagerAbstraitTest
 {
+	PassagerAbstrait Chris = creerPassager("Chris", 5);
+	PassagerAbstrait Bobbi = creerPassager("Bobbi", 4);
 
 	protected PassagerAbstrait creerPassager(String nom, int destination)
 	{
@@ -13,41 +15,74 @@ public class PassagerLunatiqueTest extends PassagerAbstraitTest
 		return pS;
 	}
 
-	@Test
-	public PassagerLunatiqueTest(String nomPassager, int numeroArret)
-	{
-		super(nomPassager,numeroArret); 
-
-	}
-
 
 
 	@Test
-	public void testChoixChangerPlaceTest(Bus bus, int numeroArret)
+	public void testChoixChangerPlace()
 	{
-		
-		if (bus instanceof Autobus)
+		Autobus Busbizarre = new Autobus(15,15);
+
+		try
 		{
-			if (this.estAssis())
+			Chris.monterDans(Busbizarre);
+			assertTrue(Chris.estAssis());
+			assertFalse(Chris.estDebout());
+			assertFalse(Chris.estDehors());
+
+			for(int i=0 ; i<4 ; i++)
 			{
-				if (((Autobus)bus).aPlaceDebout()) ((Autobus)bus).demanderPlaceDebout(this);
+
+				try
+				{
+					Busbizarre.allerArretSuivant();
+					if (i%2 !=0 )
+					{
+						assertTrue(Chris.estAssis());
+					}
+					else
+					{
+						assertTrue(Chris.estDebout());
+					}
+				}
+				catch (UsagerInvalideException e)
+				{
+					e.printStackTrace();
+					fail();
+				}
 			}
-			else if(this.estDebout())
-			{
-			if (((Autobus)bus).aPlaceAssise()) ((Autobus)bus).demanderPlaceAssise(this);
-			}	  
+
 		}
+		catch (UsagerInvalideException e)
+		{
+			e.printStackTrace();
+			fail();
+		}
+
+
+
+
+
 	}
-		
-	
-	public void testChoixPlaceMontee(Transport t)
+
+	@Test
+	public void testChoixPlaceMontee()
 	{
-		if (t instanceof Autobus)
+		Autobus Zarbibus = new Autobus(15,15);
+
+		try
 		{
-			if (  ((Autobus)t).aPlaceDebout()  )
-			{
-				((Autobus)t).demanderPlaceDebout(this) ;
-			}
+			Bobbi.monterDans(Zarbibus);
+
+			assertTrue(Bobbi.estDebout());
+			assertFalse(Bobbi.estAssis());
+			assertFalse(Bobbi.estDehors());
+
 		}
+		catch (UsagerInvalideException e)
+		{
+			e.printStackTrace();
+			fail();
+		}
+
 	}
 }
